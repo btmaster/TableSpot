@@ -3,9 +3,9 @@
 	if (!empty($_POST))
 	{
 		try{
-			include_once("classes/Restaurant.class.php");
+			include_once("classes/RestaurantHouder.class.php");
 			$restaurant = new Restaurant();
-			$restaurant->Username=$_POST['username'];
+			$restaurant->Email=$_POST['email'];
 			$restaurant->Password=$_POST['password'];
 			$restaurant->Login(); 
 
@@ -24,8 +24,8 @@
 </head>
 <body>
 	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-	<label for="username">Username</label>
-	<input type="text" name="username" id="username">
+	<label for="email">Email</label>
+	<input type="email" name="email" id="email">
 	<label for="password">Password</label>
 	<input type="password" name="password" id="password">
 	<input type="submit" name="btnLogin" value="Sign in"/>
