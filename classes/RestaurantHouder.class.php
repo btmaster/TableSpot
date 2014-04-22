@@ -93,15 +93,28 @@
 
 			if($numberofRows == 1)
 			{
+				session_start();
+				$_SESSION['rol'] = "restaurant_keeper";
+				$_SESSION['email'] = $this->m_sEmail;
 				header("Location: Home.php");
 			} else {
 				$sql = "SELECT * FROM customers WHERE Email = 
 			'".$this->m_sEmail."'and Password ='".$this->m_sPassword."';";
-				throw new Exception("E-mailadres en wachtwoord komen niet overeen");
 				$login = $db->conn->query($sql);
 				$numberofRows = $login->num_rows;
+
+				if($numberofRows == 1)
+				{
+					session_start();
+					$_SESSION['rol'] = "customer";
+					$_SESSION['email'] = $this->m_sEmail;
+					header("Location: Home.php");
+				} else {
+					throw new Exception("E-mailadres en wachtwoord komen niet overeen");
+				}
 				
 			}
+
 
 		}
 

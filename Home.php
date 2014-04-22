@@ -1,4 +1,10 @@
-<!doctype html>
+<?php 
+	session_start();
+	echo $_SESSION['rol'] . " " . $_SESSION['email'];
+
+
+
+?><!doctype html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
