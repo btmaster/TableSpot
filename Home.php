@@ -1,6 +1,6 @@
 <?php 
 	session_start();
-	echo $_SESSION['rol'] . " " . $_SESSION['email'];
+
 	
 	include_once("include/rolkeuze.php");
 	include_once("classes/Restaurant.class.php");

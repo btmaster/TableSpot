@@ -7,6 +7,7 @@
 		private $m_sName;
 		private $m_sCategorie;
 		private $m_sDiscription;
+		private $m_iSelectedId;
 
 
 		public function __set($p_sProperty, $p_vValue)
@@ -25,6 +26,9 @@
 				case "Discription":
 				$this->m_sDiscription = $p_vValue;
 				break;
+				case "SelectedId":
+				$this->m_iSelectedId = $p_vValue;
+				break;
 			}
 		}
 
@@ -42,6 +46,9 @@
 				break;
 				case "Discription":
 				return $this->m_sDiscription;
+				break;
+				case "SelectedId":
+				return $this->m_iSelectedId;
 				break;
 			}
 		}
