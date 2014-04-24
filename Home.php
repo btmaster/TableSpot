@@ -54,7 +54,7 @@
                             }
 
 		?>
-</div>
+		</div>
 
 		<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 			<label>Name</label><input type="text" name="Name">
@@ -69,6 +69,21 @@
 <!-- klant -->
 	<div id="user">
 		<h1>Klant</h1>
+				<div class="table-responsive">
+		           <?php      
+				$res = $restaurant->GetAllRestaurants();
+
+		                            while($restaurantdetails = $res->fetch_assoc())
+		                            {
+		                            echo "<div class='restaurant'><a href='Restaurant.php?id=".$restaurantdetails['ID_Restaurant']."'>";
+		                            echo "<h1>" .$restaurantdetails['Name'] . "</h1>";
+		                            echo "<h2>" .$restaurantdetails['Categorie'] . "</h2>";
+		                            echo "<p>" .$restaurantdetails['Discription'] . "</p>";
+		 							echo "</div></a>";
+		                            }
+
+				?>
+				</div>
 	</div>
 </body>
 </html>
