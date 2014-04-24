@@ -1,0 +1,31 @@
+#sortable_list{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	font: 11px Arial, Helvetic, Geneva, sans-serif;
+	float: left;
+}
+
+#sortable_list li.header div{
+	background-color:  #ccc;
+	font-weight: bold;
+	cursor: default;
+}
+#sortable_list li div{
+	display: block;
+	float: left;
+	border-bottom: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	padding: 3px 5px;
+}
+
+#sortable_list li div.listitem_Tafelnummer{width: 150px; border-left: 1px solid #ccc;}
+#sortable_list li div.listitem_Plaatsen{width: 300px;}
+#sortable_list li div.listitem_Status{width: 250px;}
+
+.clearfix {	
+	float: left;
+}
+nav li {
+	display: inline;
+}

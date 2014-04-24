@@ -77,8 +77,26 @@
 			$sql = "Select * from restaurants";
     		return $db->conn->query($sql);
 		}
-
-		
+		public function GetAllfreespots()
+		{
+			$db = new Db();
+			$sql = "Select * from TablesSpots";
+    		return $db->conn->query($sql);
+		}
+		public function GetAllReservations()
+		{
+			$db = new Db();
+			$sql = "Select * from reservations where FK_Restaurant_ID = '" . $this->m_iSelectedId . "' ";
+    		return $db->conn->query($sql);
+		}
+		public function GetTitle()
+		{
+			$db = new Db();
+			$sql = "Select Name from restaurants where ID_Restaurant = '" . $this->m_iSelectedId . "' ";
+    		$res = $db->conn->query($sql);
+    		$row = mysqli_fetch_array($res);
+			return $title = $row[0];
+		}
 
 	}
 
