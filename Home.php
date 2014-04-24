@@ -1,28 +1,32 @@
 <?php 
 	session_start();
-
-	
-	include_once("include/rolkeuze.php");
-	include_once("classes/Restaurant.class.php");
-	
-	$restaurant = new Restaurant();
-
-	if (!empty($_POST)) {
-		try {
-			$restaurant->Email=$_SESSION['email'];
-			$restaurant->Name=$_POST['Name'];
-			$restaurant->Categorie=$_POST['Categorie'];
-			$restaurant->Discription=$_POST['Discription'];
-				
-			$restaurant->SaveRestaurant();
-
-		} catch (Exception $e) {
-
-			throw new Exception("Error Processing Request");	
+	if(isset($_SESSION['email']))
+	{
+		include_once("include/rolkeuze.php");
+		include_once("classes/Restaurant.class.php");
 		
+		$restaurant = new Restaurant();
+
+		if (!empty($_POST)) {
+			try {
+				$restaurant->Email=$_SESSION['email'];
+				$restaurant->Name=$_POST['Name'];
+				$restaurant->Categorie=$_POST['Categorie'];
+				$restaurant->Discription=$_POST['Discription'];
+					
+				$restaurant->SaveRestaurant();
+
+			} catch (Exception $e) {
+
+				throw new Exception("Error Processing Request");	
+			
+			}
+					
 		}
-				
+	} else {
+		header("Location: index.php");
 	}
+
 
 
 
@@ -36,6 +40,7 @@
 </head>
 <body>
 
+	<a href="Logout.php">Log out</a>
 <!-- restauranthouder -->
 
 	<div id="restauranthouder">

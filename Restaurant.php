@@ -1,13 +1,16 @@
 <?php
 	
 	session_start();
+	if(isset($_SESSION['email']))
+	{
+		include_once("include/rolkeuze.php");
+		include_once("classes/Restaurant.class.php");
 
-	include_once("include/rolkeuze.php");
-	include_once("classes/Restaurant.class.php");
-
-	$restaurant = new Restaurant();	
-	$restaurant->SelectedId = $_GET['id'];
-
+		$restaurant = new Restaurant();	
+		$restaurant->SelectedId = $_GET['id'];
+	} else {
+		header("Location: index.php");
+	}
 ?><!doctype html>
 <html lang="en">
 <head>
@@ -74,7 +77,25 @@ include_once("include/navinclude.php");
 	</div>
 	<!-- klant -->
 	<div id="user">
-		<h1>Klant</h1>
+		<h1>Vrije tafels</h1>
+
+		<?php 
+			$RestaurantId = $restaurant->SelectedId;
+			include_once('classes/Placing.class.php');
+			$placing = new Placing();
+			$selectPlacing = $placing->GetPlace($RestaurantId);
+
+			include_once('classes/Tablespot.class.php');
+			$tablespot = new Tablespot();
+			$selectTablespot = $tablespot->GetTableFree($selectPlacing['id']);
+			while ($Tablespot = $selectTablespot->fetch_assoc())
+			{
+				echo $Tablespot['ID_Table'];
+				echo $Tablespot['Place'];
+			}
+
+
+		?>
 	</div>
 </body>
 </html>

@@ -16,5 +16,6 @@
 	<?php 	echo "<li><a href='Overview.php?id= "
 				. $_GET['id']."'>"; 
 			echo "Overview</a></li>"; ?>
+	<?php 	echo "<li><a href='Logout.php'>Logout</a></li>";?>
 
 </nav>

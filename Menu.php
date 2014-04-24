@@ -1,13 +1,16 @@
 <?php
 	
 	session_start();
+	if(isset($_SESSION['email']))
+	{
+		include_once("include/rolkeuze.php");
+		include_once("classes/Restaurant.class.php");
 
-	include_once("include/rolkeuze.php");
-	include_once("classes/Restaurant.class.php");
-
-	$restaurant = new Restaurant();	
-	$restaurant->SelectedId = $_GET['id'];
-
+		$restaurant = new Restaurant();	
+		$restaurant->SelectedId = $_GET['id'];
+	} else {
+		header("Location: index.php");
+	}
 ?><!doctype html>
 <html lang="en">
 <head>
