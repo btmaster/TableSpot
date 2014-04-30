@@ -1,5 +1,4 @@
 <?php
-	
 	session_start();
 	if(isset($_SESSION['email']))
 	{
@@ -90,7 +89,7 @@ include_once("include/navinclude.php");
 			$selectTablespot = $tablespot->GetTableFree($selectPlacing['id']);
 			while ($Tablespot = $selectTablespot->fetch_assoc())
 			{
-				echo $Tablespot['ID_Table'];
+				echo $Tablespot['ID_Table'] . "<br/>";
 				echo $Tablespot['Place'];
 			}
 
