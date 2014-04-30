@@ -53,9 +53,9 @@ include_once("include/navinclude.php");
 		<ul id="sortable_list">
 		<li id="listitem"  class="clearfix header">
 			<div class="listitem_Tafelnummer">Tafelnummer</div>
-			<div class="listitem_Plaatsen">Plaatsen</div>
-			<div class="listitem_Status">Status</div>
-			<div class="listitem_Status">Status</div>
+			<div class="listitem_Plaatsen">Aantal personen</div>
+			<div class="listitem_Status">Date</div>
+			<div class="listitem_Status">Klant</div>
 		</li>
 		<?php
 		$res = $restaurant->GetAllReservations();
