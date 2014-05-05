@@ -1,6 +1,6 @@
 <?php 
 	include_once("Db.class.php");
-	class Restaurant{
+	class RestaurantHouder{
 		private $m_sFirstname;
 		private $m_sLastname;
 		private $m_sEmail;
@@ -118,11 +118,23 @@
 
 		}
 
+		public function Select($email)
+		{
+			$db = new Db();
+			$sql = "SELECT * FROM restaurant_keeper WHERE Email = '".$this->m_sEmail."';";
+			$select = $db->conn->query($sql);
+			$numberofRows = $select->num_rows;
+
+			if($numberofRows === 1)
+			{
+				while ($oneSelect = $select->fetch_assoc())
+				{	
+					return $oneSelect;
+				}
+			}else {
+				throw new Exception("Gebruiker niet gevonden");	
+			}
+			
+		}
 	}
-
-
-
-
-
-
  ?>

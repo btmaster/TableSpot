@@ -2,16 +2,21 @@
 	include_once('Db.class.php');
 	class Reservation
 	{
+		private $m_tTime;
 		private $m_dDate;
 		private $m_iAmount;
 		private $m_iCustomer;
 		private $m_iTable;
-		private $m_iRestaurant
+		private $m_iRestaurant;
 
 		public function __set($p_sProperty, $p_vValue)
 		{
 			switch($p_sProperty)
 			{
+				case 'time':
+				$this->m_tTime = $p_vValue;
+				break;
+
 				case 'date':
 				$this->m_dDate = $p_vValue;
 				break;
@@ -38,6 +43,10 @@
 		{
 			switch($p_sProperty)
 			{
+				case 'time':
+					return $this->m_tTime;
+				break;
+
 				case 'date':
 					return $this->m_dDate;
 				break;
@@ -63,13 +72,14 @@
 		public function Save()
 		{
 			$db = new Db();
-			$sql = "insert into reservations(Date, AmountPeople,FK_Customer_ID,FK_Table_ID,FK_Restaurant_ID) VALUES (
+			$sql = "INSERT INTO reservations(Date, AmountPeople,FK_Customer_ID,FK_Table_ID,FK_Restaurant_ID) VALUES (
 				'".$this->m_dDate."',
 				'".$this->m_iAmount."',
 				'".$this->m_iCustomer."',
 				'".$this->m_iTable."',
 				'".$this->m_iRestaurant."');";
 			$db->conn->query($sql);
+			
 		}
 
 	}

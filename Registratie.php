@@ -7,7 +7,7 @@
 			if ($_POST['rol'] == 'RestaurantHouder')
 			{
 				include_once("classes/RestaurantHouder.class.php");
-				$restaurant = new Restaurant();
+				$restaurant = new RestaurantHouder();
 				$restaurant->Firstname=$_POST['firstname'];
 				$restaurant->Lastname=$_POST['lastname'];
 				$restaurant->Email=$_POST['email'];

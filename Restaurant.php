@@ -7,6 +7,7 @@
 
 		$restaurant = new Restaurant();	
 		$restaurant->SelectedId = $_GET['id'];
+		$_SESSION['restaurant'] = $_GET['id'];
 	} else {
 		header("Location: index.php");
 	}
@@ -57,17 +58,17 @@ include_once("include/navinclude.php");
 			<div class="listitem_Status">Klant</div>
 		</li>
 		<?php
-		$res = $restaurant->GetAllReservations();
+			$res = $restaurant->GetAllReservations();
 
-	while($Reservation = $res->fetch_assoc())
-	    {
-			echo "<li id='listitem_". $Reservation["ID_Resevation"] ."' class='clearfix'>";			
-			echo "<div class='listitem_Tafelnummer'>". $Reservation["FK_Table_ID"] ."</div>";
-			echo "<div class='listitem_Plaatsen'>". $Reservation["AmountPeople"] ."</div>";
-			echo "<div class='listitem_Status'>" . $Reservation["Date"] ."</div>";
-			echo "<div class='listitem_Status'>" . $Reservation["FK_Customer_ID"] ."</div>";
-			echo "</li>";
-		}
+			while($Reservation = $res->fetch_assoc())
+		    {
+				echo "<li id='listitem_". $Reservation["ID_Resevation"] ."' class='clearfix'>";			
+				echo "<div class='listitem_Tafelnummer'>". $Reservation["FK_Table_ID"] ."</div>";
+				echo "<div class='listitem_Plaatsen'>". $Reservation["AmountPeople"] ."</div>";
+				echo "<div class='listitem_Status'>" . $Reservation["Date"] ."</div>";
+				echo "<div class='listitem_Status'>" . $Reservation["FK_Customer_ID"] ."</div>";
+				echo "</li>";
+			}
 		?>
 		
 	</ul>
@@ -89,8 +90,7 @@ include_once("include/navinclude.php");
 			$selectTablespot = $tablespot->GetTableFree($selectPlacing['id']);
 			while ($Tablespot = $selectTablespot->fetch_assoc())
 			{
-				echo $Tablespot['ID_Table'] . "<br/>";
-				echo $Tablespot['Place'];
+				echo "Vrije Tafels:<br/>". "<a href='Reservation.php?id=" . $Tablespot['ID_Table'] . "'>Aantal personen: " . $Tablespot['Place'] . "</a><br/><br/>";
 			}
 
 

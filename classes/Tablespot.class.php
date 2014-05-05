@@ -81,6 +81,14 @@
 			
 		}
 
+		public function Reservation($id)
+		{
+			$db = new Db();
+			$sql = "UPDATE tablesspots SET
+			Status = 1 WHERE ID_Table = '".$id."'";
+			$db ->conn->query($sql);
+		}
+
 	}
 
 

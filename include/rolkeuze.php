@@ -1,6 +1,6 @@
 <?php
 if ($_SESSION['rol'] == "restaurant_keeper") {
-	?>
+?>	
 	<style type="text/css">
 	#user
 		{
@@ -15,9 +15,6 @@ if ($_SESSION['rol'] == "restaurant_keeper") {
 	<style type="text/css">#restauranthouder{
 display:none;
 }</style>
-	<?php
-	}
-
-
-
+<?php
+}
 ?>

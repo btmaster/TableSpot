@@ -4,7 +4,7 @@
 	{
 		try{
 			include_once("classes/RestaurantHouder.class.php");
-			$restaurant = new Restaurant();
+			$restaurant = new RestaurantHouder();
 			$restaurant->Email=$_POST['email'];
 			$restaurant->Password=$_POST['password'];
 			$restaurant->Login(); 

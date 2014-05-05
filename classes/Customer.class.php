@@ -92,13 +92,23 @@
 			}
 		}
 
-
-
-
-
+		public function Select($email)
+		{
+			$db = new Db();
+			$sql = "SELECT * FROM customers WHERE Email = '".$email."';";
+			$select = $db->conn->query($sql);
+			$numberofRows = $select->num_rows;
+			
+			if($numberofRows === 1)
+			{
+				while ($oneSelect = $select->fetch_assoc())
+				{	
+					return $oneSelect;
+				}
+			} else {
+				throw new Exception("Gebruiker niet gevonden");	
+			}
+			
+		}
 	}
-
-
-
-
  ?>
