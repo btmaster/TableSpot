@@ -72,6 +72,14 @@
 			$db->conn->query($sql);
 		}
 
+		public function GetTable($FK_Placing_ID)
+		{
+			$db = new Db();
+			$sql = "SELECT * FROM tablesspots WHERE FK_Placing_ID = '".$FK_Placing_ID."'";
+			$select = $db->conn->query($sql);
+			return $select;
+		}
+
 		public function GetTableFree($FK_Placing_ID)
 		{
 			$db = new Db();

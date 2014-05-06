@@ -61,7 +61,10 @@
 
 			if($numberofRows === 1)
 			{
-				return $select;
+				while ($oneselect = $select->fetch_assoc())
+				{
+					return $oneselect;
+				}
 			}
 		}
 

@@ -34,10 +34,16 @@ include_once("include/navinclude.php");
 			<div class="listitem_Status">Status</div>
 		</li>
 		<?php
-		$result = $restaurant->GetAllfreespots();
-
-	while($freespots = $result->fetch_assoc())
-	    {
+		$RestaurantId = $restaurant->SelectedId;
+		include_once('classes/Placing.class.php');
+		$placing = new Placing();
+		$selectPlacing = $placing->GetPlace($RestaurantId);
+		
+		include_once('classes/Tablespot.class.php');
+		$tablespot = new Tablespot();
+		$selectTablespot = $tablespot->GetTable($selectPlacing['ID_Placing']);
+		while ($freespots = $selectTablespot->fetch_assoc())
+		{
 			echo "<li id='listitem_". $freespots["ID_Table"] ."' class='clearfix'>";			
 			echo "<div class='listitem_Tafelnummer'>". $freespots["ID_Table"] ."</div>";
 			echo "<div class='listitem_Plaatsen'>". $freespots["Place"] ."</div>";
