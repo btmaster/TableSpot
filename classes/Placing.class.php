@@ -68,6 +68,23 @@
 			}
 		}
 
+		public function GetLatest()
+		{
+			$db = new Db();
+			$sql = "SELECT * FROM placing ORDER BY ID_Placing DESC LIMIT 1;";
+			$select = $db->conn->query($sql);
+			
+			$numberofRows = $select->num_rows;
+
+			if($numberofRows == 1)
+			{
+				while ($oneSelect = $select->fetch_assoc())
+				{	
+					return $oneSelect;
+				}
+			}
+		}
+
 	}
 
 
