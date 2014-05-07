@@ -94,6 +94,21 @@
 				}	
 			}
 		}
+
+		public function SelectReservaties($customer)
+		{
+			$db = new Db();
+			$sql = "SELECT * FROM reservations WHERE FK_Customer_ID = " . $customer . ";";
+			$select = $db->conn->query($sql);
+			return $select;
+		}
+
+		public function GetAllReservations()
+		{
+			$db = new Db();
+			$sql = "Select * from reservations where FK_Restaurant_ID = '" . $this->m_iSelectedId . "' ";
+		    return $db->conn->query($sql);
+		}
 	}
 
 

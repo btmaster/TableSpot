@@ -123,6 +123,7 @@
 			$db = new Db();
 			$sql = "SELECT * FROM restaurant_keeper WHERE Email = '".$this->m_sEmail."';";
 			$select = $db->conn->query($sql);
+			
 			$numberofRows = $select->num_rows;
 
 			if($numberofRows === 1)

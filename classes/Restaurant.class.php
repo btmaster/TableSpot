@@ -71,24 +71,29 @@
 
 			
 		}
+
 		public function GetAllRestaurants()
 		{
 			$db = new Db();
 			$sql = "Select * from restaurants";
     		return $db->conn->query($sql);
 		}
-		public function GetAllfreespots()
+
+		
+		
+		public function GetRestaurant($id)
 		{
 			$db = new Db();
-			$sql = "Select * from TablesSpots";
-    		return $db->conn->query($sql);
+			$sql = "Select * from restaurants where ID_Restaurant = " . $id . ";";
+			$select = $db->conn->query($sql);
+
+			while($oneSelect = $select->fetch_assoc())
+			{
+				return $oneSelect;
+			}
+			return $select;
 		}
-		public function GetAllReservations()
-		{
-			$db = new Db();
-			$sql = "Select * from reservations where FK_Restaurant_ID = '" . $this->m_iSelectedId . "' ";
-    		return $db->conn->query($sql);
-		}
+
 		public function GetTitle()
 		{
 			$db = new Db();

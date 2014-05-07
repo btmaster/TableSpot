@@ -72,6 +72,14 @@
 			$db->conn->query($sql);
 		}
 
+
+		public function GetAll()
+		{
+			$db = new Db();
+			$sql = "Select * from TablesSpots";
+		    return $db->conn->query($sql);
+		}
+
 		public function GetTable($id)
 		{
 			$db = new Db();
