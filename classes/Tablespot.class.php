@@ -104,10 +104,7 @@
 			$sql = "SELECT * FROM tablesspots WHERE FK_Placing_ID = '".$FK_Placing_ID."'";
 			$select = $db->conn->query($sql);
 
-			while ($oneSelect = $select->fetch_assoc())
-			{
-				return $oneSelect;
-			}	
+			return $select;	
 		}
 
 		public function GetTableFree($FK_Placing_ID)

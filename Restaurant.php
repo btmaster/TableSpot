@@ -34,26 +34,43 @@ include_once("include/navincludeHouder.php");
 			<div class="listitem_Status">Status</div>
 		</li>
 		<?php
-		if ($_SESSION['rol'] == "restaurant_keeper")
-		{
-			$RestaurantId = $restaurant->SelectedId;
-			include_once('classes/Placing.class.php');
-			$placing = new Placing();
-			$selectPlacing = $placing->GetPlace($RestaurantId);
-			
-			include_once('classes/Tablespot.class.php');
-			$tablespot = new Tablespot();
-			$selectTablespot = $tablespot->GetTablePlace($selectPlacing['ID_Placing']);
-			while ($freespots = $selectTablespot->fetch_assoc())
+		try{
+			if ($_SESSION['rol'] == "restaurant_keeper")
 			{
-				echo "<li id='listitem_". $freespots["ID_Table"] ."' class='clearfix'>";			
-				echo "<div class='listitem_Tafelnummer'>". $freespots["ID_Table"] ."</div>";
-				echo "<div class='listitem_Plaatsen'>". $freespots["Place"] ."</div>";
-				echo "<div class='listitem_Status'>" . $freespots["Status"] ."</div>";
-				echo "</li>";
+				$RestaurantId = $restaurant->SelectedId;
+				
+				include_once('classes/Placing.class.php');
+				$placing = new Placing();
+				$allPlacing = $placing->GetPlace($RestaurantId);
+				
+				include_once('classes/Tablespot.class.php');
+				$tablespot = new Tablespot();
+
+				while ($onePlacing = $allPlacing->fetch_assoc())
+				{
+					$selectTablespot = $tablespot->GetTablePlace($onePlacing['ID_Placing']);
+					while ($freespots = $selectTablespot->fetch_assoc())
+					{
+						echo "<li id='listitem_". $freespots["ID_Table"] ."' class='clearfix'>";			
+						echo "<div class='listitem_Tafelnummer'>". $freespots["ID_Table"] ."</div>";
+						echo "<div class='listitem_Plaatsen'>". $freespots["Place"] ."</div>";
+						echo "<div class='listitem_Status'>" . $freespots["Status"] ."</div>";
+						echo "</li>";
+					}
+				}
+				
 			}
+		} catch (Exception $e)
+		{
+			$error = $e->getMessage();
 		}
-		
+		?>
+
+		<?php
+		if(isset($error))
+		{
+			echo "<p>$error</p>";
+		}
 		?>
 		
 	</ul>

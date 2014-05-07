@@ -57,15 +57,7 @@
 			$db = new Db();
 			$sql = "SELECT * FROM placing WHERE FK_Restaurant_id = '" . $FK_Restaurant_id."' AND Actif = 1;";
 			$select = $db->conn->query($sql);
-			$numberofRows = $select->num_rows;
-
-			if($numberofRows === 1)
-			{
-				while ($oneselect = $select->fetch_assoc())
-				{
-					return $oneselect;
-				}
-			}
+			return $select;
 		}
 
 		public function GetLatest()

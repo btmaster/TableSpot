@@ -39,11 +39,7 @@
 <!-- restauranthouder -->
 
 	<div id="restauranthouder">
-		<?php
-		 
-		include_once("include/navincludeHouder.php");
-		 
-		?>
+		
 		<h1>Restaurant</h1>
 		<div class="table-responsive">
            <?php      
