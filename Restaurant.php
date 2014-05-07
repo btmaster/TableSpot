@@ -93,7 +93,7 @@ include_once("include/navinclude.php");
 
 			include_once('classes/Tablespot.class.php');
 			$tablespot = new Tablespot();
-			$selectTablespot = $tablespot->GetTableFree($selectPlacing['id']);
+			$selectTablespot = $tablespot->GetTableFree($selectPlacing['ID_Placing']);
 			while ($Tablespot = $selectTablespot->fetch_assoc())
 			{
 				echo "Vrije Tafels:<br/>". "<a href='Reservation.php?id=" . $Tablespot['ID_Table'] . "'>Aantal personen: " . $Tablespot['Place'] . "</a><br/><br/>";

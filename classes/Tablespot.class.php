@@ -72,12 +72,34 @@
 			$db->conn->query($sql);
 		}
 
-		public function GetTable($FK_Placing_ID)
+		public function GetTable($id)
+		{
+			$db = new Db();
+			$sql = "SELECT * FROM tablesspots WHERE ID_Table = '".$id."'";
+			$select = $db->conn->query($sql);
+			$numberofRows = $select->num_rows;
+
+			if($numberofRows === 1)
+			{
+				while ($oneSelect = $select->fetch_assoc())
+				{	
+					return $oneSelect;
+				}
+			}else {
+				throw new Exception("Tafel niet gevonden");	
+			}
+		}
+
+		public function GetTablePlace($FK_Placing_ID)
 		{
 			$db = new Db();
 			$sql = "SELECT * FROM tablesspots WHERE FK_Placing_ID = '".$FK_Placing_ID."'";
 			$select = $db->conn->query($sql);
-			return $select;
+
+			while ($oneSelect = $select->fetch_assoc())
+			{
+				return $oneSelect;
+			}	
 		}
 
 		public function GetTableFree($FK_Placing_ID)

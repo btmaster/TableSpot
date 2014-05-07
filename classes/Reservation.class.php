@@ -71,14 +71,24 @@
 
 		public function Save()
 		{
-			$db = new Db();
-			$sql = "INSERT INTO reservations(Date, AmountPeople,FK_Customer_ID,FK_Table_ID,FK_Restaurant_ID) VALUES (
-				'".$this->m_dDate."',
-				'".$this->m_iAmount."',
-				'".$this->m_iCustomer."',
-				'".$this->m_iTable."',
-				'".$this->m_iRestaurant."');";
-			$db->conn->query($sql);
+			include_once('Tablespot.class.php');
+			$tablespot = new Tablespot();
+			$activetablespot = $tablespot->getTable($this->m_iTable);
+			
+			if ($this->m_iAmount > $activetablespot['Place'])
+			{
+				throw new Exception("Er zijn aan deze tafel niet genoeg plaatsen voor het aantal personen");	
+			} else {
+				$db = new Db();
+				$sql = "INSERT INTO reservations(Date, AmountPeople,FK_Customer_ID,FK_Table_ID,FK_Restaurant_ID) VALUES (
+					'".$this->m_dDate."',
+					'".$this->m_iAmount."',
+					'".$this->m_iCustomer."',
+					'".$this->m_iTable."',
+					'".$this->m_iRestaurant."');";
+				$db->conn->query($sql);
+			}
+			
 			
 		}
 
