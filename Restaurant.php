@@ -117,15 +117,20 @@ include_once("include/navincludeHouder.php");
 				$RestaurantId = $restaurant->SelectedId;
 				include_once('classes/Placing.class.php');
 				$placing = new Placing();
-				$selectPlacing = $placing->GetPlace($RestaurantId);
+				$allPlacing = $placing->GetPlace($RestaurantId);
 
 				include_once('classes/Tablespot.class.php');
 				$tablespot = new Tablespot();
-				$selectTablespot = $tablespot->GetTableFree($selectPlacing['ID_Placing']);
-				while ($Tablespot = $selectTablespot->fetch_assoc())
+
+				while ($onePlacing = $allPlacing->fetch_assoc())
 				{
-					echo "Vrije Tafels:<br/>". "<a href='Reservation.php?id=" . $Tablespot['ID_Table'] . "'>Aantal personen: " . $Tablespot['Place'] . "</a><br/><br/>";
+					$selectTablespot = $tablespot->GetTableFree($onePlacing['ID_Placing']);
+					while ($Tablespot = $selectTablespot->fetch_assoc())
+					{
+						echo "Vrije Tafels:<br/>". "<a href='Reservation.php?id=" . $Tablespot['ID_Table'] . "'>Aantal personen: " . $Tablespot['Place'] . "</a><br/><br/>";
+					}	
 				}
+				
 			}
 		?>
 	</div>
