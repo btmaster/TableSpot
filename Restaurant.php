@@ -25,31 +25,35 @@
  
 include_once("include/navincludeHouder.php");
  
-?><div>
+?>
 	<h1>Open Spot</h1>
-		<ul id="sortable_list">
+	<ul id="sortable_list">
 		<li id="listitem"  class="clearfix header">
 			<div class="listitem_Tafelnummer">Tafelnummer</div>
 			<div class="listitem_Plaatsen">Plaatsen</div>
 			<div class="listitem_Status">Status</div>
 		</li>
 		<?php
-		$RestaurantId = $restaurant->SelectedId;
-		include_once('classes/Placing.class.php');
-		$placing = new Placing();
-		$selectPlacing = $placing->GetPlace($RestaurantId);
-		
-		include_once('classes/Tablespot.class.php');
-		$tablespot = new Tablespot();
-		$selectTablespot = $tablespot->GetTablePlace($selectPlacing['ID_Placing']);
-		while ($freespots = $selectTablespot->fetch_assoc())
+		if ($_SESSION['rol'] == "restaurant_keeper")
 		{
-			echo "<li id='listitem_". $freespots["ID_Table"] ."' class='clearfix'>";			
-			echo "<div class='listitem_Tafelnummer'>". $freespots["ID_Table"] ."</div>";
-			echo "<div class='listitem_Plaatsen'>". $freespots["Place"] ."</div>";
-			echo "<div class='listitem_Status'>" . $freespots["Status"] ."</div>";
-			echo "</li>";
+			$RestaurantId = $restaurant->SelectedId;
+			include_once('classes/Placing.class.php');
+			$placing = new Placing();
+			$selectPlacing = $placing->GetPlace($RestaurantId);
+			
+			include_once('classes/Tablespot.class.php');
+			$tablespot = new Tablespot();
+			$selectTablespot = $tablespot->GetTablePlace($selectPlacing['ID_Placing']);
+			while ($freespots = $selectTablespot->fetch_assoc())
+			{
+				echo "<li id='listitem_". $freespots["ID_Table"] ."' class='clearfix'>";			
+				echo "<div class='listitem_Tafelnummer'>". $freespots["ID_Table"] ."</div>";
+				echo "<div class='listitem_Plaatsen'>". $freespots["Place"] ."</div>";
+				echo "<div class='listitem_Status'>" . $freespots["Status"] ."</div>";
+				echo "</li>";
+			}
 		}
+		
 		?>
 		
 	</ul>
@@ -64,7 +68,9 @@ include_once("include/navincludeHouder.php");
 			<div class="listitem_Status">Klant</div>
 		</li>
 		<?php
-			$res = $restaurant->GetAllReservations();
+			include_once("classes/Reservation.class.php");
+			$reservation = new Reservation();
+			$res = $reservation->GetAllReservations();
 
 			while($Reservation = $res->fetch_assoc())
 		    {
@@ -79,27 +85,31 @@ include_once("include/navincludeHouder.php");
 		
 	</ul>
 </div>
-		
-	</div>
 	<!-- klant -->
 	<div id="user">
+	<?php
+	 
+	include_once("include/navincludeKlant.php");
+	 
+	?>
 		<h1>Vrije tafels</h1>
 
 		<?php 
-			$RestaurantId = $restaurant->SelectedId;
-			include_once('classes/Placing.class.php');
-			$placing = new Placing();
-			$selectPlacing = $placing->GetPlace($RestaurantId);
-
-			include_once('classes/Tablespot.class.php');
-			$tablespot = new Tablespot();
-			$selectTablespot = $tablespot->GetTableFree($selectPlacing['ID_Placing']);
-			while ($Tablespot = $selectTablespot->fetch_assoc())
+			if($_SESSION['rol'] === "customer")
 			{
-				echo "Vrije Tafels:<br/>". "<a href='Reservation.php?id=" . $Tablespot['ID_Table'] . "'>Aantal personen: " . $Tablespot['Place'] . "</a><br/><br/>";
+				$RestaurantId = $restaurant->SelectedId;
+				include_once('classes/Placing.class.php');
+				$placing = new Placing();
+				$selectPlacing = $placing->GetPlace($RestaurantId);
+
+				include_once('classes/Tablespot.class.php');
+				$tablespot = new Tablespot();
+				$selectTablespot = $tablespot->GetTableFree($selectPlacing['ID_Placing']);
+				while ($Tablespot = $selectTablespot->fetch_assoc())
+				{
+					echo "Vrije Tafels:<br/>". "<a href='Reservation.php?id=" . $Tablespot['ID_Table'] . "'>Aantal personen: " . $Tablespot['Place'] . "</a><br/><br/>";
+				}
 			}
-
-
 		?>
 	</div>
 </body>
