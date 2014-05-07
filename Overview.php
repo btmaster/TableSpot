@@ -43,8 +43,7 @@
 	<div id="user">
 		<h1>Overzicht reservaties</h1>
 		<?php
-			echo "activeUser";
-		/*try{
+			try{
 			include_once("classes/Restauranthouder.class.php");
 			include_once("include/navincludeKlant.php");
 			include_once("classes/Reservation.class.php");
@@ -67,7 +66,7 @@
 				
 		}
 		
-		 */
+		 
 		?>
 		
 	</div>

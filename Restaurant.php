@@ -41,7 +41,7 @@ include_once("include/navincludeHouder.php");
 		
 		include_once('classes/Tablespot.class.php');
 		$tablespot = new Tablespot();
-		$selectTablespot = $tablespot->GetTable($selectPlacing['ID_Placing']);
+		$selectTablespot = $tablespot->GetTablePlace($selectPlacing['ID_Placing']);
 		while ($freespots = $selectTablespot->fetch_assoc())
 		{
 			echo "<li id='listitem_". $freespots["ID_Table"] ."' class='clearfix'>";			

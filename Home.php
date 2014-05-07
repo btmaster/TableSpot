@@ -2,8 +2,6 @@
 	session_start();
 	if(isset($_SESSION['email']))
 	{
-		
-		
 		try {
 		include_once("include/rolkeuze.php");
 		include_once("classes/Restaurant.class.php");
