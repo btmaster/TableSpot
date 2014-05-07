@@ -23,7 +23,7 @@
 	<div id="restauranthouder">
 <?php
  
-include_once("include/navinclude.php");
+include_once("include/navincludeHouder.php");
  
 ?><div>
 	<h1>Open Spot</h1>

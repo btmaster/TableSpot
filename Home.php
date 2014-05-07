@@ -39,11 +39,14 @@
 	<link href="css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
-
-	<a href="Logout.php">Log out</a>
 <!-- restauranthouder -->
 
 	<div id="restauranthouder">
+		<?php
+		 
+		include_once("include/navincludeHouder.php");
+		 
+		?>
 		<h1>Restaurant</h1>
 		<div class="table-responsive">
            <?php      
@@ -74,6 +77,11 @@
 <!-- klant -->
 	<div id="user">
 		<h1>Klant</h1>
+		<?php
+		 
+		include_once("include/navincludeKlant.php");
+		 
+		?>
 				<div class="table-responsive">
 		           <?php      
 				$res = $restaurant->GetAllRestaurants();
