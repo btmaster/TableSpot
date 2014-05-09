@@ -58,9 +58,10 @@
 		</div>
 
 		<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-			<label>Name</label><input type="text" name="Name">
-			<!--dropdown--> <label>categorie</label><input type="text" name="Categorie">
-			<label>discription</label><input type="textarea" name="Discription">
+			<label for="Name">Name</label><input type="text" name="Name">
+			<!--dropdown--> <label for="Categorie">categorie</label><input type="text" name="Categorie">
+			<label for="Discription">discription</label><input type="textarea" name="Discription">
+			<label
 			<input type="submit" name="btnsubmit">
 		</form>
 <!-- ajax <li> Restaurant toevoegen</li> -->

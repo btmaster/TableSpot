@@ -95,6 +95,33 @@
 			}
 		}
 
+		public function Delete($id)
+		{
+			$db = new Db();
+			$sql = "DELETE FROM reservations WHERE ID_Resevation = '".$id."';";
+			$db->conn->query($sql);
+		}
+
+		public function SelectOne($id)
+		{
+			$db = new Db();
+			$sql = "SELECT * FROM reservations WHERE ID_Resevation = '".$id."';";
+			//throw new Exception($sql);
+			
+			$select = $db->conn->query($sql);
+			$numberofRows = $select->num_rows;
+
+			if($numberofRows === 1)
+			{
+				while ($oneSelect = $select->fetch_assoc())
+				{	
+					return $oneSelect;
+				}
+			}else {
+				throw new Exception("Reservatie niet gevonden");	
+			}
+		}
+
 		public function SelectReservaties($customer)
 		{
 			$db = new Db();

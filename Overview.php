@@ -24,6 +24,9 @@
 	<meta charset="UTF-8">
 	<title>Overzicht</title>
 	<link href="css/Tablespot.css" rel="stylesheet">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+	<script src="js/index.js" type="text/javascript"></script>
 </head>
 <body>
 	<!-- Restaurant -->
@@ -55,7 +58,7 @@
 					while ($oneReservation = $allreservations->fetch_assoc())
 					{
 						$oneRestaurant = $restaurant->getRestaurant($oneReservation["FK_Restaurant_ID"]);
-						echo "1 Tafel met " . $oneReservation["AmountPeople"] . " plaatsen bij het restaurant " . $oneRestaurant["Name"] . ".";
+						echo "<p>1 Tafel met " . $oneReservation["AmountPeople"] . " plaatsen bij het restaurant " . $oneRestaurant["Name"] . ".<a href='#' class='annuleren' data-id='" . $oneReservation['ID_Resevation'] . "'>Annuleren</a></p><br/>";
 					}
 				}
 				

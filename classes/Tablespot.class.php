@@ -1,4 +1,4 @@
-<?php 
+s<?php 
 	include_once('Db.class.php');
 	class Tablespot
 	{
@@ -120,8 +120,16 @@
 		{
 			$db = new Db();
 			$sql = "UPDATE tablesspots SET
-			Status = 1 WHERE ID_Table = '".$id."'";
-			$db ->conn->query($sql);
+			Status = 1 WHERE ID_Table = '".$id."';";
+			$db->conn->query($sql);
+		}
+
+		public function Annulation($id)
+		{
+			$db = new Db();
+			$sql = "UPDATE tablesspots SET
+			Status = 0 WHERE ID_Table = '".$id."';";			
+			$db->conn->query($sql);
 		}
 
 	}
