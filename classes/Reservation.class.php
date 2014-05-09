@@ -72,8 +72,11 @@
 		public function Save()
 		{
 			include_once('Tablespot.class.php');
+			include_once('Restaurant.class.php');
 			$tablespot = new Tablespot();
+			$restaurant = new Restaurant();
 			$activetablespot = $tablespot->getTable($this->m_iTable);
+			$restaurantId = $restaurant->getRestaurant($this->m_iRestaurant);
 			
 			if ($this->m_iAmount > $activetablespot['Place'])
 			{
@@ -83,14 +86,20 @@
 				{
 					throw new Exception("De datum ligt in het verleden");
 				} else {
-					$db = new Db();
-					$sql = "INSERT INTO reservations(Date, AmountPeople,FK_Customer_ID,FK_Table_ID,FK_Restaurant_ID) VALUES (
-						'".$this->m_dDate."',
-						'".$this->m_iAmount."',
-						'".$this->m_iCustomer."',
-						'".$this->m_iTable."',
-						'".$this->m_iRestaurant."');";
-					$db->conn->query($sql);
+					if($this->m_tTime > $restaurantId['Opening'] && $this->m_tTime < $restaurantId['Closing'])
+					{
+						$db = new Db();
+						$sql = "INSERT INTO reservations(Date, AmountPeople,FK_Customer_ID,FK_Table_ID,FK_Restaurant_ID) VALUES (
+							'".$this->m_dDate."',
+							'".$this->m_iAmount."',
+							'".$this->m_iCustomer."',
+							'".$this->m_iTable."',
+							'".$this->m_iRestaurant."');";
+						$db->conn->query($sql);
+					} else {
+						throw new Exception("You can only make a reservation between " . $restaurantId['Opening'] . " and " . $restaurantId['Closing']);
+					}
+					
 				}	
 			}
 		}

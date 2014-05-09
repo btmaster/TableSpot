@@ -7,6 +7,8 @@
 		private $m_sName;
 		private $m_sCategorie;
 		private $m_sDiscription;
+		private $m_tOpening;
+		private $m_tClosing;
 		private $m_iSelectedId;
 
 
@@ -25,6 +27,12 @@
 				break;
 				case "Discription":
 				$this->m_sDiscription = $p_vValue;
+				break;
+				case "Opening":
+				$this->m_tOpening = $p_vValue;
+				break;
+				case "Closing":
+				$this->m_tClosing = $p_vValue;
 				break;
 				case "SelectedId":
 				$this->m_iSelectedId = $p_vValue;
@@ -47,6 +55,12 @@
 				case "Discription":
 				return $this->m_sDiscription;
 				break;
+				case "Opening":
+				return $this->m_tOpening;
+				break;
+				case "Closing":
+				return $this->m_tClosing;
+				break;
 				case "SelectedId":
 				return $this->m_iSelectedId;
 				break;
@@ -55,6 +69,8 @@
 
 		public function SaveRestaurant()
 		{
+			if ($this->m_tOpening<$this->m_tClosing)
+			{
 				$db = new Db();
 				/* restaurant id ophalen */
 				$sql = "select ID_Keeper from restaurant_keeper where Email = '".$this->m_sEmail."'";
@@ -62,12 +78,18 @@
 				$row = mysqli_fetch_array($result);
 				$FK_Keeper_ID = $row[0];
 
-				$sql = "insert into restaurants(Name, Discription, Categorie, FK_Keeper_ID) VALUES (
+				$sql = "insert into restaurants(Name, Discription, Categorie, Opening, Closing, FK_Keeper_ID) VALUES (
 					'".$this->m_sName."',
 					'".$this->m_sDiscription."',
 					'".$this->m_sCategorie."',
+					'".$this->m_tOpening."',
+					'".$this->m_tClosing."',
 					'".$FK_Keeper_ID."');";
 				$db->conn->query($sql);
+			} else {
+				throw new Exception("Openingsuur moet voor het sluitingsuur zijn");
+			}
+				
 
 			
 		}

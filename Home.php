@@ -13,6 +13,8 @@
 				$restaurant->Name=$_POST['Name'];
 				$restaurant->Categorie=$_POST['Categorie'];
 				$restaurant->Discription=$_POST['Discription'];
+				$restaurant->Opening=$_POST['Opening'];
+				$restaurant->Closing=$_POST['Closing'];
 					
 				$restaurant->SaveRestaurant();	
 		}
@@ -58,10 +60,16 @@
 		</div>
 
 		<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-			<label for="Name">Name</label><input type="text" name="Name">
-			<!--dropdown--> <label for="Categorie">categorie</label><input type="text" name="Categorie">
-			<label for="Discription">discription</label><input type="textarea" name="Discription">
-			<label
+			<label for="Name">Name</label>
+			<input type="text" name="Name">
+			<label for="Categorie">Categorie</label>
+			<input type="text" name="Categorie">
+			<label for="Discription">Discription</label>
+			<input type="textarea" name="Discription">
+			<label for="Opening">Opening time</label>
+			<input type="time" name="Opening" id="Opening">
+			<label for="Closing">Closing time</label>
+			<input type="time" name="Closing" id="Closing">
 			<input type="submit" name="btnsubmit">
 		</form>
 <!-- ajax <li> Restaurant toevoegen</li> -->
@@ -93,6 +101,15 @@
 				</div>
 				
 	</div>
+
+	<?php 
+		if(isset($error))
+		{
+			echo $error;
+		}
+
+
+	?>
 
 	
 </body>
