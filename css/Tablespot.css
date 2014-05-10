@@ -1,4 +1,139 @@
-#sortable_list{
+header h1 {
+	background-color:  #34495E;
+	padding: 15px;
+	color:#ffffff;
+	text-align: center;
+	font-size: 150%;
+	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+}
+/* typographie */
+
+body{
+	background-color: #fff;
+}
+#container{
+	position: relative;
+	margin: auto;
+	width: 990px;
+	height: auto;
+}
+
+/* form */
+.form-bg
+{
+	width:50%; 
+	margin-top: 80px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #ECF0F1;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	text-align: center;
+}
+.form-bg h2
+{
+	font-size: 150%;
+	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #232323;
+	padding-top:25px; 
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.form-bg input[type="text"], .form-bg input[type="password"],  
+.form-bg input[type="email"], .form-bg textarea{
+    border: 1px solid #CCC;
+    height: 20px;
+    margin-bottom: 16px;
+    margin-right: auto;
+    margin-top: 2px;
+    margin-left: auto;
+    background-color: #fff;
+    padding: 6px 12px;
+    width: 70%;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    font: normal 14px/14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+	input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus{
+		box-shadow: 0px 0px 0px 2px #16A085;
+		border:1px solid #16A085;
+	}
+.form-bg label
+{
+ 	font-size: 100%;
+	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #232323;
+	padding-top:25px; 
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.form-bg #radioboxes
+{
+	margin: 15px;
+}
+.form-bg .rol
+{
+	font-size: 75%;
+	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+	margin: 5px;
+	font-weight:normal;
+}
+
+
+.form-bg #button
+{
+	padding: 10px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	width: 20%;
+	color:#fff;
+	background-color: #34495E;
+	margin-bottom: 35px;
+	font-size: 100%;
+}
+.form-bg #button:hover
+{
+	background-color: #3B6775;
+}
+.form-bg a
+{
+	color: #3498DB;
+	margin-left: 200px;
+	margin-right: 10px;
+}
+.form-bg a:hover
+{
+	color: #16A085;
+	margin-left: 200px;
+	margin-right: 10px;
+}
+.form-bg #login
+{
+	color: #3498DB;
+	margin-left: 225px;
+	margin-right: 10px;
+}
+.form-bg #login:hover
+{
+	color: #16A085;
+	margin-left: 225px;
+	margin-right: 10px;
+}
+
+
+
+
+/*   lijst drukken  */
+#sortable_list
+{
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -6,12 +141,15 @@
 	float: left;
 }
 
-#sortable_list li.header div{
+#sortable_list li.header div
+{
 	background-color:  #ccc;
 	font-weight: bold;
 	cursor: default;
 }
-#sortable_list li div{
+
+#sortable_list li div
+{
 	display: block;
 	float: left;
 	border-bottom: 1px solid #ccc;
@@ -26,6 +164,9 @@
 .clearfix {	
 	float: left;
 }
+
+/* navigatie */ 
 nav li {
 	display: inline;
 }
+

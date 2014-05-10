@@ -8,6 +8,7 @@
 		private $m_iCustomer;
 		private $m_iTable;
 		private $m_iRestaurant;
+		private $m_iSelectedId;
 
 		public function __set($p_sProperty, $p_vValue)
 		{
@@ -35,6 +36,10 @@
 
 				case 'restaurant':
 				$this->m_iRestaurant = $p_vValue;
+				break;
+				
+				case 'SelectedId':
+				$this->m_iSelectedId = $p_vValue;
 				break;
 			}
 		}
@@ -66,6 +71,10 @@
 				case 'restaurant':
 					return $this->m_iRestaurant;
 				break;
+
+				case 'SelectedId':
+					return $this->m_iSelectedId;
+					break;
 			}
 		}
 
