@@ -39,28 +39,34 @@
 
 	<link rel="stylesheet" type="text/css" href="css/reset.css" />
 	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	<link rel="stylesheet" type="text/css" href="css/Tablespot.css">
 	<script src="js/index.js" type="text/javascript"></script> 
 </head>
+<header><h1>Table Spot</h1></header>
 <body>
-
+	<div id="container">
+		<div class="form-bg">
 	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-		<label for="rol">Functie</label><br/>
-		<input type="radio" name="rol" id="rol" value="Klant" onclick="show();" checked>Klant <br/>
-		<input type="radio" name="rol" id="rol" value="RestaurantHouder" onclick="hide();" >
-		RestaurantHouder<br/>
-		<label for="firstname">Voornaam</label><br/>
-		<input type="text" name="firstname" id="firstname"><br/>
-		<label for="lastname">Achternaam</label><br/>
-		<input type="text" name="lastname" id="lastname"><br/>
-		<label for="email">Email</label><br/>
-		<input type="email" name="email" id="email"><br/>
-		<label for="password">Wachtwoord</label><br/>
-		<input type="password" name="password" id="password"><br/>
-		<label for="passwordcheck">Herhaal het wachtwoord</label><br/>
-		<input type="password" name="passwordcheck" id="passwordcheck"><br/>
-		<label for="phone" id="lblphone">Phone</label><br/>
-		<input type="text" name="phone" id="phone"><br/>
-		<input type="submit" name="btnRegistreer" value="Registreer"><br/>
+
+		<h2>Registratie</h2>
+
+
+		<div id="radioboxes">	
+		<label for="rol">Functie:</label>
+
+			<input type="radio" name="rol" class="rol" id="rol" value="Klant" onclick="show();" checked><label>Klant</label>
+			<input type="radio" name="rol" class="rol" id="rol" value="RestaurantHouder" onclick="hide();" ><label>RestaurantHouder</label> 
+		</div>
+
+
+		<input type="text" name="firstname" id="firstname" placeholder="Voornaam">
+		<input type="text" name="lastname" id="lastname"  placeholder="Achternaam">
+		<input type="email" name="email" id="email" placeholder="Email">
+		<input type="password" name="password" id="password"  placeholder="Wachtwoord">
+		<input type="password" name="passwordcheck" id="passwordcheck" placeholder="Herhaal wachtwoord">
+		<input type="text" name="phone" id="phone" placeholder="Gsm nummer">
+		<a id="login" href="index.php" alt="terug naar login">Login</a>
+		<input type="submit" name="btnRegistreer" value="Registreer" id="button">
 	</form>
 		<?php
 		if(isset($error))
@@ -68,6 +74,7 @@
 			echo "<p>$error</p>";
 		}
 		?>
-
+</div>
+</div>
 </body>
 </html>

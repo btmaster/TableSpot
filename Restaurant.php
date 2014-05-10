@@ -8,6 +8,7 @@
 		$restaurant = new Restaurant();	
 		$restaurant->SelectedId = $_GET['id'];
 		$_SESSION['restaurant'] = $_GET['id'];
+
 	} else {
 		header("Location: index.php");
 	}

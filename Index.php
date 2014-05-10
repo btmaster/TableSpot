@@ -21,22 +21,34 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Tablespot</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/Tablespot.css">
+
 </head>
 <body>
+	<header><h1>Table Spot</h1></header>
+
+	<div id="container">
+		<div class="form-bg">
 	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-	<label for="email">Email</label>
-	<input type="email" name="email" id="email">
-	<label for="password">Password</label>
-	<input type="password" name="password" id="password">
-	<input type="submit" name="btnLogin" value="Sign in"/>
+	
+	<h2>Login</h2>
+
+		<input type="email" name="email" id="email" placeholder="Email">
+		<input type="password" name="password" id="password" placeholder="Password">
+		<a id="Registratie" href="Registratie.php" alt="registratie">Registreer</a>
+		<input type="submit" name="btnLogin" value="Login" id="button" alt="login"/>
+		
 	</form>
-	<a href="Registratie.php" alt="registratie">Registreer</a>
+
+	
 	<?php
 		if(isset($error))
 		{
 			echo "<p>$error</p>";
 		}
 	?>
-
+</div>
+</div>
 </body>
 </html>
