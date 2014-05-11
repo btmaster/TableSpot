@@ -10,6 +10,7 @@
 		private $m_tOpening;
 		private $m_tClosing;
 		private $m_iSelectedId;
+		private $m_igeslotenMaandag;
 
 
 		public function __set($p_sProperty, $p_vValue)
@@ -28,11 +29,11 @@
 				case "Discription":
 				$this->m_sDiscription = $p_vValue;
 				break;
-				case "Opening":
-				$this->m_tOpening = $p_vValue;
-				break;
-				case "Closing":
-				$this->m_tClosing = $p_vValue;
+				/*geslotenMaandag
+Openingmaandag
+ClosingMaandag*/
+				case "geslotenMaandag":
+				$this->m_igeslotenMaandag = $p_vValue;
 				break;
 				case "SelectedId":
 				$this->m_iSelectedId = $p_vValue;
