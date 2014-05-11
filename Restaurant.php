@@ -18,6 +18,8 @@
 	<meta charset="UTF-8">
 	<title><?php echo $restaurant->GetTitle(); ?></title>
 	<link href="css/Tablespot.css" rel="stylesheet">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="js/index.js" type="text/javascript"></script>
 </head>
 <body>
 	<!-- Restaurant -->
@@ -28,6 +30,20 @@ include_once("include/navincludeHouder.php");
  
 ?>
 	<h1>Open Spot</h1>
+	<select name="place" id="place">
+		<?php 
+			include_once('classes/Placing.class.php');
+			$placing = new Placing();
+			$allPlacing = $placing->GetAllRestaurant($_SESSION['restaurant']);
+
+			while ($onePlacing = $allPlacing->fetch_assoc())
+			{
+				echo "<option value='" . $onePlacing['ID_Placing'] . "'>" . $onePlacing['Name'] . "</option>";
+			}
+
+
+		?>
+	</select>
 	<ul id="sortable_list">
 		<li id="listitem"  class="clearfix header">
 			<div class="listitem_Tafelnummer">Tafelnummer</div>
@@ -42,25 +58,23 @@ include_once("include/navincludeHouder.php");
 				
 				include_once('classes/Placing.class.php');
 				$placing = new Placing();
-				$allPlacing = $placing->GetPlace($RestaurantId);
+				$onePlacing = $placing->GetPlace($RestaurantId);
 				
 				include_once('classes/Tablespot.class.php');
 				$tablespot = new Tablespot();
 
-				while ($onePlacing = $allPlacing->fetch_assoc())
+				$selectTablespot = $tablespot->GetTablePlace($onePlacing['ID_Placing']);
+				while ($freespots = $selectTablespot->fetch_assoc())
 				{
-					$selectTablespot = $tablespot->GetTablePlace($onePlacing['ID_Placing']);
-					while ($freespots = $selectTablespot->fetch_assoc())
-					{
-						echo "<li id='listitem_". $freespots["ID_Table"] ."' class='clearfix'>";			
-						echo "<div class='listitem_Tafelnummer'>". $freespots["ID_Table"] ."</div>";
-						echo "<div class='listitem_Plaatsen'>". $freespots["Place"] ."</div>";
-						echo "<div class='listitem_Status'>" . $freespots["Status"] ."</div>";
-						echo "</li>";
-					}
+					echo "<li id='listitem_". $freespots["ID_Table"] ."' class='clearfix'>";			
+					echo "<div class='listitem_Tafelnummer'>". $freespots["ID_Table"] ."</div>";
+					echo "<div class='listitem_Plaatsen'>". $freespots["Place"] ."</div>";
+					echo "<div class='listitem_Status'>" . $freespots["Status"] ."</div>";
+					echo "</li>";
 				}
-				
 			}
+				
+			
 		} catch (Exception $e)
 		{
 			$error = $e->getMessage();

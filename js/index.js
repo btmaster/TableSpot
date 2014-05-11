@@ -32,5 +32,21 @@ $(document).ready(function()
 
 			e.preventDefault();
 	});
+
+	$("#place").on("change", function(e){
+		var place = $(this).val();
+		var request = $.ajax
+		({
+			url:"ajax/Placing.php",
+			type: "POST",
+			data:{place : place},
+			dataType: "json"
+		});
+
+		request.done(function(msg) {
+			alert('gelukt');
+		});
+	});
+
 });
 

@@ -57,7 +57,16 @@
 			$db = new Db();
 			$sql = "SELECT * FROM placing WHERE FK_Restaurant_id = '" . $FK_Restaurant_id."' AND Actif = 1;";
 			$select = $db->conn->query($sql);
-			return $select;
+
+			$numberofRows = $select->num_rows;
+
+			if($numberofRows == 1)
+			{
+				while ($oneSelect = $select->fetch_assoc())
+				{	
+					return $oneSelect;
+				}
+			}
 		}
 
 		public function GetLatest()
@@ -76,6 +85,30 @@
 				}
 			}
 		}
+
+		public function GetAllRestaurant($FK_Restaurant_id)
+		{
+			$db = new Db();
+			$sql = "SELECT * FROM placing WHERE FK_Restaurant_id = '" . $FK_Restaurant_id."';";
+			$select = $db ->conn->query($sql);
+			return $select;
+		}
+
+		public function UpdateAll($FK_Restaurant_id)
+		{
+			$db = new Db();
+			$sql = "UPDATE placing SET Actif = '0' WHERE FK_Restaurant_id = '" . $FK_Restaurant_id."';";
+			$db->conn->query($sql);
+		}
+
+		public function UpdateActive($id)
+		{
+			$db = new Db();
+			$sql = "UPDATE placing SET Actif = '1' WHERE ID_Placing = '".$id."';";
+			$db->conn->query($sql);
+		}
+
+
 
 	}
 
