@@ -2,12 +2,47 @@
 	session_start();
 	if(isset($_SESSION['email']))
 	{
-		include_once("include/rolkeuze.php");
-		include_once("classes/Restaurant.class.php");
+		try
+		{
+			include_once("include/rolkeuze.php");
+			include_once("classes/Restaurant.class.php");
+			include_once("classes/Reservation.class.php");
+			include_once("classes/Tablespot.class.php");
 
-		$restaurant = new Restaurant();	
-		$restaurant->SelectedId = $_GET['id'];
-		$_SESSION['restaurant'] = $_GET['id'];
+			$restaurant = new Restaurant();	
+			$restaurant->SelectedId = $_GET['id'];
+			$_SESSION['restaurant'] = $_GET['id'];
+
+			$reservation = new Reservation();
+			$allReservations = $reservation->GetAllReservations($_SESSION['restaurant']);
+
+			if(!empty($allReservations))
+			{
+				$time = date('H:i:s', time());
+				$tablespot = new Tablespot();
+				
+				while ($oneReservation = $allReservations->fetch_assoc())
+				{
+					
+					if($oneReservation['Date'] === date("Y-m-d"))
+					{
+						$reservationTime = date('H:i:s', strtotime($oneReservation['Time'])+3600);
+
+						if ($reservationTime < $time)
+						{
+							$tablespotId = $reservation->SelectOne($oneReservation['ID_Resevation']);
+							$tablespot = new Tablespot();
+							$tablespot->Annulation($tablespotId['FK_Table_ID']);
+							$reservation->Delete($oneReservation['ID_Resevation']);
+						} 
+					}
+					
+				}
+			}
+		} catch (Exception $e)
+		{
+			$error = $e->getMessage();
+		}
 
 	} else {
 		header("Location: index.php");

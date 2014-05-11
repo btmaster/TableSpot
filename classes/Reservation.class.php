@@ -91,15 +91,16 @@
 			{
 				throw new Exception("Er zijn aan deze tafel niet genoeg plaatsen voor het aantal personen");	
 			} else {
-				if($this->m_dDate<date("Y-m-d H:i:s"))
+				if($this->m_dDate<date("Y-m-d"))
 				{
 					throw new Exception("De datum ligt in het verleden");
 				} else {
 					if($this->m_tTime > $restaurantId['Opening'] && $this->m_tTime < $restaurantId['Closing'])
 					{
 						$db = new Db();
-						$sql = "INSERT INTO reservations(Date, AmountPeople,FK_Customer_ID,FK_Table_ID,FK_Restaurant_ID) VALUES (
+						$sql = "INSERT INTO reservations(Date,Time, AmountPeople,FK_Customer_ID,FK_Table_ID,FK_Restaurant_ID) VALUES (
 							'".$this->m_dDate."',
+							'".$this->m_tTime."',
 							'".$this->m_iAmount."',
 							'".$this->m_iCustomer."',
 							'".$this->m_iTable."',
