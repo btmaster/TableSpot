@@ -111,6 +111,7 @@
 		{
 			$db = new Db();
 			$sql = "SELECT * FROM tablesspots WHERE FK_Placing_ID = '".$FK_Placing_ID."'AND Status = 0;";
+			
 			$select = $db->conn->query($sql);
 			return $select;
 			

@@ -1,12 +1,13 @@
 <?php 
 try{
-
 	include_once("../classes/Placing.class.php");
-	$_SESSION['restaurant'] = 2;
+	include_once("../classes/Reservation.class.php");
+	session_start();
 	if(isset($_POST['place'])){
+		$reservation = new Reservation();
+		$reservation->DeleteAll($_SESSION['restaurant']);
 		$placing = new Placing();
 		$placing->UpdateAll($_SESSION['restaurant']);
-		$respons['getal'] = $_SESSION['restaurant'];
 		$placing->UpdateActive($_POST['place']);
 		$test['status'] = 'gelukt';
 	}

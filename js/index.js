@@ -26,26 +26,62 @@ $(document).ready(function()
 				dataType : "json",
 
 			});
-			request.fail(function() {
+			request.done(function() {
 				location.reload();
+			});
+
+			request.fail(function(jqXHR, textStatus) {
+				alert( "Request failed: " + textStatus );
 			});
 
 			e.preventDefault();
 	});
 
-	$("#place").on("change", function(e){
-		var place = $(this).val();
+	$("a.delete").on("click", function(e)
+	{
+		var clickedLink = $(this);
+		var reservationId = clickedLink.data("id");
+
 		var request = $.ajax
 		({
-			url:"ajax/Placing.php",
-			type: "POST",
-			data:{place : place},
-			dataType: "json"
+			url: "ajax/Reservation.php",
+			type:"POST",
+			data:{reservationId : reservationId},
+			dataType : "json",
+
+		});
+		request.done(function() {
+			location.reload();
 		});
 
-		request.done(function(msg) {
-			alert('gelukt');
+		request.fail(function(jqXHR, textStatus) {
+			alert( "Request failed: " + textStatus );
 		});
+
+		e.preventDefault();
+	});
+
+	$("#place").on("change", function(e){
+		if (confirm('If you change your placing, all the reservations will be canceled. Are you sure to change the placing?')) 
+		{
+		    var place = $(this).val();
+		    var request = $.ajax
+		    ({
+		    	url:"ajax/Placing.php",
+		    	type: "POST",
+		    	data:{place : place},
+		    	dataType: "json"
+		    });
+
+		    request.done(function() {
+		    	location.reload();
+		    });
+
+		    request.fail(function(jqXHR, textStatus) {
+		    	alert( "Request failed: " + textStatus );
+		    });	
+		}
+		
 	});
 
 });

@@ -120,6 +120,13 @@
 			$db->conn->query($sql);
 		}
 
+		public function DeleteAll($restaurant)
+		{
+			$db = new Db();
+			$sql = "DELETE FROM reservations WHERE FK_Restaurant_ID ='".$restaurant."';";
+			$db->conn->query($sql);
+		}
+
 		public function SelectOne($id)
 		{
 			$db = new Db();
@@ -148,10 +155,10 @@
 			return $select;
 		}
 
-		public function GetAllReservations()
+		public function GetAllReservations($restaurant)
 		{
 			$db = new Db();
-			$sql = "Select * from reservations where FK_Restaurant_ID = '" . $this->m_iSelectedId . "' ";
+			$sql = "Select * from reservations where FK_Restaurant_ID = '" . $restaurant . "' ";
 		    return $db->conn->query($sql);
 		}
 	}

@@ -56,7 +56,7 @@
 		{
 			$db = new Db();
 			$sql = "SELECT * FROM placing WHERE FK_Restaurant_id = '" . $FK_Restaurant_id."' AND Actif = 1;";
-			$select = $db->conn->query($sql);
+			$select = $db->conn->query($sql);			
 
 			$numberofRows = $select->num_rows;
 
@@ -66,6 +66,8 @@
 				{	
 					return $oneSelect;
 				}
+			} else {
+				throw new Exception("Geen opstelling gevonden");
 			}
 		}
 

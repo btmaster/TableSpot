@@ -32,14 +32,28 @@ include_once("include/navincludeHouder.php");
 	<h1>Open Spot</h1>
 	<select name="place" id="place">
 		<?php 
+		try{
 			include_once('classes/Placing.class.php');
 			$placing = new Placing();
+			$activePlacing = $placing->GetPlace($_SESSION['restaurant']);
 			$allPlacing = $placing->GetAllRestaurant($_SESSION['restaurant']);
 
 			while ($onePlacing = $allPlacing->fetch_assoc())
 			{
-				echo "<option value='" . $onePlacing['ID_Placing'] . "'>" . $onePlacing['Name'] . "</option>";
-			}
+				if ($onePlacing['ID_Placing'] === $activePlacing['ID_Placing'])
+				{
+					//throw new Exception("ja");
+					
+					echo "<option value='" . $onePlacing['ID_Placing'] . "' selected>" . $onePlacing['Name'] . "</option>";
+
+				} else {
+					echo "<option value='" . $onePlacing['ID_Placing'] . "'>" . $onePlacing['Name'] . "</option>";
+				}
+			}	
+		} catch (Exception $e)
+		{
+			$error = $e->getMessage();
+		}
 
 
 		?>
@@ -80,45 +94,39 @@ include_once("include/navincludeHouder.php");
 			$error = $e->getMessage();
 		}
 		?>
-
-		<?php
-		if(isset($error))
-		{
-			echo "<p>$error</p>";
-		}
-		?>
 		
 	</ul>
-</div>
-<div>
-	<h1>Reservations</h1>
-		<ul id="sortable_list">
-		<li id="listitem"  class="clearfix header">
-			<div class="listitem_Tafelnummer">Tafelnummer</div>
-			<div class="listitem_Plaatsen">Aantal personen</div>
-			<div class="listitem_Status">Date</div>
-			<div class="listitem_Status">Klant</div>
-		</li>
-		<?php
-			include_once("classes/Reservation.class.php");
-			$reservation = new Reservation();
-			$res = $reservation->GetAllReservations();
+	<div>
+		<h1>Reservations</h1>
+			<ul id="sortable_list">
+			<li id="listitem"  class="clearfix header">
+				<div class="listitem_Tafelnummer">Tafelnummer</div>
+				<div class="listitem_Plaatsen">Aantal personen</div>
+				<div class="listitem_Status">Date</div>
+				<div class="listitem_Status">Klant</div>
+			</li>
+			<?php
+				include_once("classes/Reservation.class.php");
+				$reservation = new Reservation();
+				$res = $reservation->GetAllReservations($_SESSION['restaurant']);
 
-			while($Reservation = $res->fetch_assoc())
-		    {
-				echo "<li id='listitem_". $Reservation["ID_Resevation"] ."' class='clearfix'>";			
-				echo "<div class='listitem_Tafelnummer'>". $Reservation["FK_Table_ID"] ."</div>";
-				echo "<div class='listitem_Plaatsen'>". $Reservation["AmountPeople"] ."</div>";
-				echo "<div class='listitem_Status'>" . $Reservation["Date"] ."</div>";
-				echo "<div class='listitem_Status'>" . $Reservation["FK_Customer_ID"] ."</div>";
-				echo "</li>";
-			}
-		?>
-		
-	</ul>
+				while($Reservation = $res->fetch_assoc())
+			    {
+					echo "<li id='listitem_". $Reservation["ID_Resevation"] ."' class='clearfix'>";			
+					echo "<div class='listitem_Tafelnummer'>". $Reservation["FK_Table_ID"] ."</div>";
+					echo "<div class='listitem_Plaatsen'>". $Reservation["AmountPeople"] ."</div>";
+					echo "<div class='listitem_Status'>" . $Reservation["Date"] ."</div>";
+					echo "<div class='listitem_Status'>" . $Reservation["FK_Customer_ID"] ."</div>";
+					echo "<div class='listitem_Verwijder'><a href='#' data-id='" . $Reservation["ID_Resevation"] . "' class='delete'>Delete</a>";
+					echo "</li>";
+				}
+			?>
+			
+		</ul>
+	</div>
 </div>
-	<!-- klant -->
-	<div id="user">
+
+<div id="user">
 	<?php
 	 
 	include_once("include/navincludeKlant.php");
@@ -127,27 +135,36 @@ include_once("include/navincludeHouder.php");
 		<h1>Vrije tafels</h1>
 
 		<?php 
+		try{
+
+
 			if($_SESSION['rol'] === "customer")
 			{
-				$RestaurantId = $restaurant->SelectedId;
+				$RestaurantId = $_SESSION['restaurant'];
 				include_once('classes/Placing.class.php');
 				$placing = new Placing();
-				$allPlacing = $placing->GetPlace($RestaurantId);
+				$onePlacing = $placing->GetPlace($RestaurantId);
 
 				include_once('classes/Tablespot.class.php');
 				$tablespot = new Tablespot();
-
-				while ($onePlacing = $allPlacing->fetch_assoc())
+				$selectTablespot = $tablespot->GetTableFree($onePlacing['ID_Placing']);
+				while ($Tablespot = $selectTablespot->fetch_assoc())
 				{
-					$selectTablespot = $tablespot->GetTableFree($onePlacing['ID_Placing']);
-					while ($Tablespot = $selectTablespot->fetch_assoc())
-					{
-						echo "Vrije Tafels:<br/>". "<a href='Reservation.php?id=" . $Tablespot['ID_Table'] . "'>Aantal personen: " . $Tablespot['Place'] . "</a><br/><br/>";
-					}	
-				}
+					echo "Vrije Tafels:<br/>". "<a href='Reservation.php?id=" . $Tablespot['ID_Table'] . "'>Aantal personen: " . $Tablespot['Place'] . "</a><br/><br/>";
+				}	
 				
 			}
+		} catch (Exception $e)
+		{
+			$error = $e->getMessage();
+		}
 		?>
 	</div>
+	<?php
+		if(isset($error))
+		{
+			echo "<p>$error</p>";
+		}
+		?>
 </body>
 </html>
