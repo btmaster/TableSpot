@@ -13,7 +13,7 @@
 				$restaurant->Name=$_POST['Name'];
 				$restaurant->Categorie=$_POST['Categorie'];
 				$restaurant->Discription=$_POST['Discription'];
-				
+
 				$restaurant->geslotenMaandag=$_POST['geslotenMaandag'];
 				$restaurant->Openingmaandag=$_POST['Openingmaandag'];
 				$restaurant->ClosingMaandag=$_POST['ClosingMaandag'];
@@ -92,7 +92,7 @@
 
 						<div class="dag"><label class="daglabel">Maandag</label>
 							<p>
-								<label>Gesloten:</label><input type="checkbox" name="geslotenMaandag">
+								<label>Gesloten:</label><input type="checkbox" name="geslotenMaandag" value="1">
 								<label>Opening:</label><input type="time" name="Openingmaandag" class="Opening">
 								<label>Sluiting:</label><input type="time" name="ClosingMaandag" class="Closing">
 
@@ -100,42 +100,42 @@
 						</div>
 						<div class="dag"><label class="daglabel">Dinsdag</label>
 							<p>
-								<label>Gesloten:</label><input type="checkbox" name="geslotenDinsdag">
+								<label>Gesloten:</label><input type="checkbox" name="geslotenDinsdag" value="1">
 								<label>Opening:</label><input type="time" name="OpeningDinsdag" class="Opening">
 								<label>Sluiting:</label><input type="time" name="ClosingDinsdag" class="Closing">
 							</p>	
 						</div>
 						<div class="dag"><label class="daglabel">Woensdag</label>
 							<p>
-								<label>Gesloten:</label><input type="checkbox" name="geslotenWoensdag">
+								<label>Gesloten:</label><input type="checkbox" name="geslotenWoensdag" value="1">
 								<label>Opening:</label><input type="time" name="OpeningWoensdag" class="Opening">
 								<label>Sluiting:</label><input type="time" name="ClosingWoensdag" class="Closing">
 							</p>	
 						</div>
 						<div class="dag"><label class="daglabel">Donderdag</label>
 							<p>
-								<label>Gesloten:</label><input type="checkbox" name="geslotenDonderdag">
+								<label>Gesloten:</label><input type="checkbox" name="geslotenDonderdag" value="1">
 								<label>Opening:</label><input type="time" name="OpeningDonderdag" class="Opening">
 								<label>Sluiting:</label><input type="time" name="ClosingDonderdag" class="Closing">
 							</p>
 						</div>
 						<div class="dag"><label class="daglabel">Vrijdag</label>
 							<p>
-								<label>Gesloten:</label><input type="checkbox" name="geslotenVrijdag">
+								<label>Gesloten:</label><input type="checkbox" name="geslotenVrijdag" value="1">
 								<label>Opening:</label><input type="time" name="OpeningVrijdag" class="Opening">
 								<label>Sluiting:</label><input type="time" name="ClosingVrijdag" class="Closing">
 							</p>
 						</div>
 						<div class="dag"><label class="daglabel">Zaterdag</label>
 							<p>
-								<label>Gesloten:</label><input type="checkbox" name="geslotenZaterdag">
+								<label>Gesloten:</label><input type="checkbox" name="geslotenZaterdag" value="1">
 								<label>Opening:</label><input type="time" name="OpeningZaterdag" class="Opening">
 								<label>Sluiting:</label><input type="time" name="ClosingZaterdag" class="Closing">
 							</p>
 						</div>
 						<div class="dag"><label class="daglabel">Zondag</label>
 							<p>
-								<label>Gesloten:</label><input type="checkbox" name="geslotenZondag">
+								<label>Gesloten:</label><input type="checkbox" name="geslotenZondag" value="1">
 								<label>Opening:</label><input type="time" name="OpeningZondag" class="Opening">
 								<label>Sluiting:</label><input type="time" name="ClosingZondag" class="Closing">
 							</p>	
