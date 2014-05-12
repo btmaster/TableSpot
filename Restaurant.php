@@ -56,6 +56,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title><?php echo $restaurant->GetTitle(); ?></title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link href="css/Tablespot.css" rel="stylesheet">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="js/index.js" type="text/javascript"></script>
