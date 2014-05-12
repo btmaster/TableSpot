@@ -11,19 +11,6 @@ function hide()
 	document.getElementById('lblphone').style.display = 'none';
 }
 
-function update(msg)
-{
-	var update ='';
-	alert(msg.tables.length);
-	for (var i = 0; i<msg.tables.length; i++)
-	{
-		update += "Free table:<br/>" + "<a href='Reservation.php?id=" + msg.tables[i][0] + "'>Aantal personen: " + msg.tables[i][4] + "</a><br/><br/>";
-		alert(update);
-	}
-
-	$("#tafels").html(update);
-}
-
 function getTable()
 {
 	var amountval = $("#amount").val();
@@ -42,7 +29,7 @@ function getTable()
 			//alert(msg.tables[0][1]);
 			for (var i = 0; i < msg.tables.length; i++)
 			{
-				update += "Free table:<br/>" + "<a href='Reservation.php?id=" + msg.tables[i][0] + "'>Aantal personen: " + msg.tables[i][4] + "</a><br/><br/>";
+				update += "Free table:<br/>" + "<a href='Reservation.php?id=" + msg.tables[i][0] + "&amount=" + amountval + "&date=" + dateval + "&time=" + timeval +"' class='reservationlink'>Aantal personen: " + msg.tables[i][4] + "</a><br/><br/>";
 			}
 
 			$("#tafels").html(update);
@@ -124,6 +111,13 @@ $(document).ready(function()
 		}
 		
 	});
-
+	/*
+	$("a.reservationlink").on("click"function(e)
+	{
+		var amountval = $("#amount").val();
+		var dateval = $("#date").val();
+		var timeval = $("#time").val();
+	});
+	*/
 });
 

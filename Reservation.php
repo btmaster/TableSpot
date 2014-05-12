@@ -12,7 +12,7 @@
 			try
 			{
 				
-				include_once("include/rolkeuze.php");
+				//include_once("include/rolkeuze.php");
 				include_once("classes/Tablespot.class.php");
 				include_once("classes/Reservation.class.php");
 				include_once("classes/Restaurant.class.php");
@@ -61,11 +61,11 @@
 		<h1>Reserveer nu</h1>
 		<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 			<label for="amount">Aantal personen</label><br/>
-			<input type="text" name="amount" id="amount"><br/>
+			<input type="text" name="amount" id="amount" value="<?php if(isset($_GET['amount'])){echo $_GET['amount'];}?>"><br/>
 			<label for="lastname">Datum</label><br/>
-			<input type="date" name="date" id="date"><br/>
+			<input type="date" name="date" id="date" value="<?php if(isset($_GET['date'])){echo $_GET['date'];}?>"><br/>
 			<label for="time">Tijdstip</label><br/>
-			<input type="time" name ="time" id="time"><br/>
+			<input type="time" name ="time" id="time" value="<?php if(isset($_GET['time'])){echo $_GET['time'];}?>"><br/>
 			<input type="submit" name="btnVoegToe" value="
 			Reserveer" id="reserveer"><br/>
 		</form>

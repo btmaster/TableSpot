@@ -177,33 +177,6 @@ include_once("include/navincludeHouder.php");
 		<label for="time">Time</label>
 		<input type="time" name="time" id="time" class="search" data-id="time" value="<?php echo date('H:i:s') ?>"><br/>
 		<div id="tafels">
-		<?php 
-		try{
-
-
-			if($_SESSION['rol'] === "customer")
-			{
-				/*
-				$RestaurantId = $_SESSION['restaurant'];
-				include_once('classes/Placing.class.php');
-				$placing = new Placing();
-				$onePlacing = $placing->GetPlace($RestaurantId);
-
-				include_once('classes/Tablespot.class.php');
-				$tablespot = new Tablespot();
-				$selectTablespot = $tablespot->GetTableFree($onePlacing['ID_Placing']);
-				while ($Tablespot = $selectTablespot->fetch_assoc())
-				{
-					echo "Free table:<br/>". "<a href='Reservation.php?id=" . $Tablespot['ID_Table'] . "'>Aantal personen: " . $Tablespot['Place'] . "</a><br/><br/>";
-				}	
-				*/
-
-			}
-		} catch (Exception $e)
-		{
-			$error = $e->getMessage();
-		}
-		?>
 		</div>
 	</div>
 	<?php

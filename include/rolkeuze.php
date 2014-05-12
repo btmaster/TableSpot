@@ -17,5 +17,4 @@ if ($_SESSION['rol'] == "restaurant_keeper") {
 	}
 
 	</style>";
-}
-?>
+}?>
