@@ -32,6 +32,11 @@ function getTable()
 				update += "Free table:<br/>" + "<a href='Reservation.php?id=" + msg.tables[i][0] + "&amount=" + amountval + "&date=" + dateval + "&time=" + timeval +"' class='reservationlink'>Aantal personen: " + msg.tables[i][4] + "</a><br/><br/>";
 			}
 
+			if(msg.tables.length == 0)
+			{
+				update = "There are no free tables available now.";
+			}
+
 			$("#tafels").html(update);
 			//update(msg);
 		});
@@ -43,7 +48,6 @@ function getTable()
 $(document).ready(function()
 {
 	getTable('');
-	document.getElementById("form").style.display = 'none';
 	$("a.annuleren").on("click", function(e)
 	{
 			var clickedLink = $(this);
