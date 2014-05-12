@@ -181,18 +181,41 @@ include_once("include/navincludeHouder.php");
 	?>
 		<h1>Menukaart</h1>
 		<?php 
+		try{
 			include_once('classes/Menu.class.php');
 			$menu = new Menu();
 			$oneMenu = $menu->GetLatest($_SESSION['restaurant']);
+
 			if ($oneMenu == "no menu")
 			{
 				echo "<p>No information of a menu</p>";
 			} else {
-				echo "<p>" . $oneMenu['name'] . "</p>";
-				echo "<p>" . $oneMenu['discription'] . "</p>";
+				echo "<p>" . $oneMenu['Name'] . "</p>";
+				echo "<p>" . $oneMenu['Discription'] . "</p>";
 			}
-			
+			echo "<h2>Dishes</h2>";
+		
+			include('classes/Gerecht.class.php');
+			$gerecht = new Gerecht();
+			$allGerecht = $gerecht->GetAll($oneMenu['ID_Menu']);
+
+			while($oneGerecht = $allGerecht->fetch_assoc())
+			{
+				echo "<p>" . $oneGerecht['Gerecht'] . " : €" . $oneGerecht['Prijs'];
+			}
+		} catch(Exception $e)
+		{
+			$error = $e->getMessage();
+		}
+
+		if(isset($error))
+		{
+			echo $error;
+		}
+
 		?>
+
+
 		<h1>Free Tables</h1>
 		<label for="amount">Amount of people</label>
 		<input type="text" name="amount" id="amount" class="search" data-id="amount" value="2">

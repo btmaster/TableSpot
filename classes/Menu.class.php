@@ -48,15 +48,17 @@
 				'".$this->m_iRestaurant."');";
 			
 			$db->conn->query($sql);
-			header("Location: Home.php");
+			//header("Location: Home.php");
 
 		}
 
 		public function GetLatest($restaurant)
 		{
 			$db = new Db();
-			$sql = "SELECT * FROM menu ORDER BY ID_Menu DESC LIMIT 1 WHERE FK_Restaurants_ID = '".$restaurant."';";
+			$sql = "SELECT * FROM menu WHERE FK_Restaurants_ID = '".$restaurant."' ORDER BY ID_Menu DESC LIMIT 1;";
 			$select = $db->conn->query($sql);
+			//throw new Exception($sql);
+			
 			
 			if (empty($select))
 			{

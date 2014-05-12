@@ -129,6 +129,31 @@ $(document).ready(function()
 		document.getElementById('maak').style.display = 'block'; 
 		document.getElementById('form').style.display = 'none';
 	});
+
+	$("#maakGerecht").on("click", function(e)
+	{
+		var gerecht = $("#gerecht").val();
+		var prijs = $("#prijs").val();
+		var request = $.ajax
+		({
+			url:"ajax/Gerecht.php",
+			type: "POST",
+			data:{gerecht : gerecht, prijs : prijs},
+			dataType: "json"
+		});
+
+		request.done(function(msg) {
+			var update = '';
+			update = "<p>" + msg.gerecht + " : €" + msg.prijs;
+			$("#gerecht").val('');
+			$("#prijs").val('');
+			$("#lijstgerechten").prepend(update);
+			$("#lijstgerechten").first().slideDown();
+			
+		}); 
+
+		e.preventDefault();
+	});
 	
 });
 
