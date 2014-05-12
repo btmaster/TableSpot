@@ -54,7 +54,9 @@
 include_once("include/navincludeHouder.php");
 
  
-?>	
+?>
+<div id="container">
+<div class="menus">
 	<div id="opstelling">
 	<h1>Make a arrangement of tables</h1>
 	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
@@ -62,16 +64,16 @@ include_once("include/navincludeHouder.php");
 	<input type="text" name="name" id="name"><br/>
 	<label for="amounttabels">Amount of tables</label><br/>
 	<input type="text" name="amounttabels" id="amounttabels"><br/>
-	<input type="submit" name="btnVoegtoe" value="Add"><br/>
+	<input type="submit" name="btnVoegtoe" value="Add" class="btn"><br/>
 	</form>
 	</div>
-
+</div>
 	<?php 
 
 		if (!empty($_POST['amounttabels']))
 		{
 			$_SESSION['amount'] = $_POST['amounttabels'];
-			echo "<div id='tafels'><h1>Add tables</h1>";
+			echo "<div id='tafels' class='menus'><h1>Add tables</h1>";
 	?>
 			<form action='<?php echo $_SERVER["PHP_SELF"]; ?>' method='post'>
 	<?php 
@@ -81,7 +83,7 @@ include_once("include/navincludeHouder.php");
 					<input type='text' name='amount" . $i . "' id='amount" . $i ."'><br/>";
 			}
 
-			echo "<input type='submit' name='btnVoegtoe' value='Add'><br/></form></div>";
+			echo "<input type='submit' name='btnVoegtoe' value='Add' class='btn'><br/></form></div>";
 			echo "<style type='text/css'>
 				#opstelling{
 					display:none;
@@ -91,7 +93,7 @@ include_once("include/navincludeHouder.php");
 		}
 
 	?>
-	
+	</div>
 </div>
 </body>
 </html>
