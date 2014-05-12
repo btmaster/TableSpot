@@ -91,26 +91,35 @@
 			{
 				throw new Exception("Er zijn aan deze tafel niet genoeg plaatsen voor het aantal personen");	
 			} else {
-				if($this->m_dDate<date("Y-m-d"))
+				$day = date('l', strtotime($date));
+				$allClosing = $restaurant->GetAllClosing($this->m_iRestaurant);
+
+				while ($oneClosing = $allClosing->fetch_assoc())
 				{
-					throw new Exception("De datum ligt in het verleden");
-				} else {
-					if($this->m_tTime > $restaurantId['Opening'] && $this->m_tTime < $restaurantId['Closing'])
-					{
-						$db = new Db();
-						$sql = "INSERT INTO reservations(Date,Time, AmountPeople,FK_Customer_ID,FK_Table_ID,FK_Restaurant_ID) VALUES (
-							'".$this->m_dDate."',
-							'".$this->m_tTime."',
-							'".$this->m_iAmount."',
-							'".$this->m_iCustomer."',
-							'".$this->m_iTable."',
-							'".$this->m_iRestaurant."');";
-						$db->conn->query($sql);
-					} else {
-						throw new Exception("You can only make a reservation between " . $restaurantId['Opening'] . " and " . $restaurantId['Closing']);
-					}
+					throw new Exception($day);
 					
-				}	
+					if($day)
+					{
+						throw new Exception("De datum ligt in het verleden");
+					} else {
+						if($this->m_tTime > $restaurantId['Opening'] && $this->m_tTime < $restaurantId['Closing'])
+						{
+							$db = new Db();
+							$sql = "INSERT INTO reservations(Date,Time, AmountPeople,FK_Customer_ID,FK_Table_ID,FK_Restaurant_ID) VALUES (
+								'".$this->m_dDate."',
+								'".$this->m_tTime."',
+								'".$this->m_iAmount."',
+								'".$this->m_iCustomer."',
+								'".$this->m_iTable."',
+								'".$this->m_iRestaurant."');";
+							$db->conn->query($sql);
+						} else {
+							throw new Exception("You can only make a reservation between " . $restaurantId['Opening'] . " and " . $restaurantId['Closing']);
+						}
+						
+					}	
+				}
+				
 			}
 		}
 

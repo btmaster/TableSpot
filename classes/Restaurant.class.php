@@ -492,6 +492,15 @@
 			return $title = $row[0];
 		}
 
+		public function GetAllClosing($restaurant)
+		{
+			$db = new Db();
+			$sql = "SELECT * FROM openinghours WHERE FK_restaurants_ID = '" . $db->conn->real_escape_string($restaurant) . "' AND Status = 1;";
+			$select = $db->conn->query($sql);
+			return $select;
+		}
+
+
 	}
 
 
