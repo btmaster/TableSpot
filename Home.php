@@ -100,8 +100,15 @@
 			<div class="sectie_1">
 				<div class="profiel">
 					<H2>Restaurant owner</H2>
-					<H3>Name and firstname</H3>
-					<p>E-mail</p>
+					<?php 
+
+					$profiel = $restaurant->GetProfile();
+ 
+                            echo "<h3>" .$profiel['Firstname'] . " ". $profiel['Lastname'] . "</h3>";
+                            echo "<p>" .$profiel['Email'] . "</p>";
+
+                            ?>
+
 				</div>
 				<div id="maak">
 					<p><a href="#" id="maakAan">Add Restaurant</a></p>				
@@ -172,7 +179,7 @@
 		</div>
 <!-- ajax <li> Restaurant toevoegen</li> -->
 	<div class="collum_2">
-		<h1>Restaurants</h1>
+		<h1 class="titlelijst">Restaurants</h1>
 		<div class="sectie_1">
            <?php      
 			$res = $restaurant->GetAllRestaurants();
@@ -192,12 +199,10 @@
 </div>
 <!-- klant -->
 	<div id="user">
-		<h1>Choose a restaurant to make a reservation.</h1>
-		<?php
-		include_once("include/navincludeKlant.php");
-		 
-		?>
-				<div class="table-responsive">
+		
+
+				<div class="lijstrestaurants">
+					<h1 class="titlelijst">Choose a restaurant to make a reservation.</h1>
 		           <?php   
 
 				$res = $restaurant->GetAllRestaurants();

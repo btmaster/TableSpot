@@ -132,38 +132,56 @@ body{
 
 
 /*   lijst drukken  */
-#sortable_list
-{
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	font: 11px Arial, Helvetic, Geneva, sans-serif;
-	float: left;
+.divTable{
+	display:table;         
+	width:auto;                          
+	border-spacing:5px;/*cellspacing:poor IE support for  this*/
 }
-
-#sortable_list li.header div
-{
-	background-color:  #ccc;
+.divRow{
+  display:table-row;
+  width:auto;
+  clear:both;
+  	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 75%;
+	margin-bottom: 10px;
+}
+.divCell{
+  float:left;/*fix for  buggy browsers*/
+  display:table-column;         
+  width:150px;  
+  	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
 	font-weight: bold;
-	cursor: default;
+	font-size: 100%;
+	margin-bottom: 10px;  
+	padding-bottom: 10px;
+	border-bottom: 1px solid;
 }
 
-#sortable_list li div
+.list_1
 {
-	display: block;
-	float: left;
-	border-bottom: 1px solid #ccc;
-	border-right: 1px solid #ccc;
-	padding: 3px 5px;
+	padding: 15px;
+	margin: 15px;
+	background-color: #ECF0F1;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+.list_1 h1
+{
+  	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 100%;
+	margin-bottom: 10px;
+}
+.list_1 h2
+{
+  	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 100%;
+	margin-bottom: 10px;
 }
 
-#sortable_list li div.listitem_Tafelnummer{width: 150px; border-left: 1px solid #ccc;}
-#sortable_list li div.listitem_Plaatsen{width: 300px;}
-#sortable_list li div.listitem_Status{width: 250px;}
-
-.clearfix {	
-	float: left;
-}
 
 /* navigatie */ 
 nav{
@@ -250,7 +268,7 @@ border-radius: 10px;
 	width: 50%;
 	margin-top: 30px;
 }
-.collum_2 h1
+.collum_2 .titlelijst
 {
 	padding: 15px;
 	margin: 15px;
@@ -398,7 +416,66 @@ margin: 8px 0px 8px 0px;
 		border:1px solid #16A085;
 	}
 
+
+	/* klant*/
+
+	.lijstrestaurants
+	{
+	overflow: scroll;
+	overflow-x: hidden;
+	max-height:530px;
+	padding: 15px;
+	margin: 15px;
+	background-color: #ECF0F1;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	}
+	.restaurant
+{
+	margin-top: 10px;
+	padding-bottom:15px;
+	border-bottom: 1px solid #fff;
+}
+.lijstrestaurants .restaurant a
+{
+	text-decoration: none;
+	color: #232323;
+}
+.lijstrestaurants .restaurant:hover a
+{
+	color: #2ECC71;
+}
+.lijstrestaurants .restaurant a h1
+{
+	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 150%;
+	margin-bottom: 10px;
+}
+.lijstrestaurants .restaurant a h2
+{
+	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 110%;
+	margin-bottom: 10px;
+}
+.lijstrestaurants .restaurant a p
+{
+	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 100%;
+	margin-bottom: 10px;
+}
+.lijstrestaurants .titlelijst
+{
+	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 175%;
+	margin-bottom: 25px;
+=======
 #form, #gerechten
 {
 	display:none;
+>>>>>>> 54abf7cb1742cb955094e19e0b444dc2a43ac3b6
 }

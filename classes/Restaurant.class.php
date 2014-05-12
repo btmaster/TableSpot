@@ -499,7 +499,14 @@
 			$select = $db->conn->query($sql);
 			return $select;
 		}
-
+		public function GetProfile()
+		{
+			$db = new Db();
+			$sql = "select * from restaurant_keeper where Email = '".$db->conn->real_escape_string($this->m_sEmail)."'";
+			$result = $db->conn->query($sql);
+			$row = mysqli_fetch_array($result);
+			return $data = $row[0];
+		}
 
 	}
 
