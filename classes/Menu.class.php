@@ -52,19 +52,24 @@
 
 		}
 
-		public function GetLatest()
+		public function GetLatest($restaurant)
 		{
 			$db = new Db();
-			$sql = "SELECT * FROM menu ORDER BY ID_Menu DESC LIMIT 1;";
+			$sql = "SELECT * FROM menu ORDER BY ID_Menu DESC LIMIT 1 WHERE FK_Restaurants_ID = '".$restaurant."';";
 			$select = $db->conn->query($sql);
 			
-			$numberofRows = $select->num_rows;
-
-			if($numberofRows == 1)
+			if (empty($select))
 			{
-				while ($oneSelect = $select->fetch_assoc())
-				{	
-					return $oneSelect;
+				return "no menu";
+			} else {
+				$numberofRows = $select->num_rows;
+
+				if($numberofRows == 1)
+				{
+					while ($oneSelect = $select->fetch_assoc())
+					{	
+						return $oneSelect;
+					}
 				}
 			}
 		}

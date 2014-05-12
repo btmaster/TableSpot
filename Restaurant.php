@@ -183,9 +183,15 @@ include_once("include/navincludeHouder.php");
 		<?php 
 			include_once('classes/Menu.class.php');
 			$menu = new Menu();
-			$oneMenu = $menu->GetLatest();
-			echo "<p>" . $oneMenu['name'] . "</p>";
-			echo "<p>" . $oneMenu['discription'] . "</p>";
+			$oneMenu = $menu->GetLatest($_SESSION['restaurant']);
+			if ($oneMenu == "no menu")
+			{
+				echo "<p>No information of a menu</p>";
+			} else {
+				echo "<p>" . $oneMenu['name'] . "</p>";
+				echo "<p>" . $oneMenu['discription'] . "</p>";
+			}
+			
 		?>
 		<h1>Free Tables</h1>
 		<label for="amount">Amount of people</label>

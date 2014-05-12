@@ -4,7 +4,7 @@
 	{
 		try
 		{
-			if ($_POST['rol'] == 'RestaurantHouder')
+			if ($_POST['rol'] == 'RestaurantOwner')
 			{
 				include_once("classes/RestaurantHouder.class.php");
 				$restaurant = new RestaurantHouder();
@@ -48,25 +48,25 @@
 		<div class="form-bg">
 	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
-		<h2>Registratie</h2>
+		<h2>Registration</h2>
 
 
 		<div id="radioboxes">	
-		<label for="rol">Functie:</label>
+		<label for="rol">Function:</label>
 
-			<input type="radio" name="rol" class="rol" id="rol" value="Klant" onclick="show();" checked><label>Klant</label>
-			<input type="radio" name="rol" class="rol" id="rol" value="RestaurantHouder" onclick="hide();" ><label>RestaurantHouder</label> 
+			<input type="radio" name="rol" class="rol" id="rol" value="Customer" onclick="show();" checked><label>Klant</label>
+			<input type="radio" name="rol" class="rol" id="rol" value="RestaurantOwner" onclick="hide();" ><label>RestaurantHouder</label> 
 		</div>
 
 
-		<input type="text" name="firstname" id="firstname" placeholder="Voornaam">
-		<input type="text" name="lastname" id="lastname"  placeholder="Achternaam">
+		<input type="text" name="firstname" id="firstname" placeholder="Firstname">
+		<input type="text" name="lastname" id="lastname"  placeholder="Lastname">
 		<input type="email" name="email" id="email" placeholder="Email">
-		<input type="password" name="password" id="password"  placeholder="Wachtwoord">
-		<input type="password" name="passwordcheck" id="passwordcheck" placeholder="Herhaal wachtwoord">
-		<input type="text" name="phone" id="phone" placeholder="Gsm nummer">
+		<input type="password" name="password" id="password"  placeholder="Password">
+		<input type="password" name="passwordcheck" id="passwordcheck" placeholder="Repeat password">
+		<input type="text" name="phone" id="phone" placeholder="Mobile Phone">
 		<a id="login" href="index.php" alt="terug naar login">Login</a>
-		<input type="submit" name="btnRegistreer" value="Registreer" id="button">
+		<input type="submit" name="btnRegistreer" value="Register" id="button">
 	</form>
 		<?php
 		if(isset($error))

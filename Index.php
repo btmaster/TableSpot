@@ -36,7 +36,7 @@
 
 		<input type="email" name="email" id="email" placeholder="Email">
 		<input type="password" name="password" id="password" placeholder="Password">
-		<a id="Registratie" href="Registratie.php" alt="registratie">Registreer</a>
+		<a id="Registratie" href="Registratie.php" alt="registratie">Register</a>
 		<input type="submit" name="btnLogin" value="Login" id="button" alt="login"/>
 		
 	</form>
