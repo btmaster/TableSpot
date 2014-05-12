@@ -166,8 +166,31 @@ body{
 }
 
 /* navigatie */ 
+nav{
+	background-color:  #34495E;
+	padding: 15px;
+	color:#ffffff;
+	font-size: 100%;
+	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+	font-weight: bold;
+}
 nav li {
 	display: inline;
+
+}
+nav li a{
+	color: #ffffff;
+	text-decoration: none;
+
+}
+nav li a .active
+{
+	color: #ffffff;
+	background-color: #2ECC71;
+}
+nav li a:hover
+{
+	color: #16A085;
 }
 #logout
 {
