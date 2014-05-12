@@ -84,6 +84,8 @@
 	<title>Home</title>
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/Tablespot.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="js/index.js" type="text/javascript"></script>
 </head>
 <header><h1>Table Spot</h1><a href="Logout.php" alt="logout" id="logout">Logout</a></header>
 <body>
@@ -99,11 +101,14 @@
 				<div class="profiel">
 					<H2>Restauranthouder</H2>
 					<H3>Naam en Achternaam</H3>
-					<p>Email</p>				
+					<p>Email</p>
+				</div>
+				<div id="maak">
+					<p><a href="#" id="maakAan">Add Restaurant</a></p>				
 				</div>
 			</div>
 			<div class="sectie_2">
-				<div class="form-reg">
+				<div id="form" class="form-reg">
 
 						<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 							<input type="text" name="Name" placeholder="Naam">

@@ -28,12 +28,6 @@
 	<script src="js/index.js" type="text/javascript"></script>
 </head>
 <body>
-	<!-- Restaurant -->
-	<div id="restauranthouder">
-		
-		<p>test</p>
-	</div>
-
 	<!-- klant -->
 	<div id="user">
 	<?php

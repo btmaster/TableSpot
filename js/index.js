@@ -43,6 +43,7 @@ function getTable()
 $(document).ready(function()
 {
 	getTable('');
+	document.getElementById("form").style.display = 'none';
 	$("a.annuleren").on("click", function(e)
 	{
 			var clickedLink = $(this);
@@ -111,13 +112,19 @@ $(document).ready(function()
 		}
 		
 	});
-	/*
-	$("a.reservationlink").on("click"function(e)
+
+	$("#maakAan").on("click", function(e)
 	{
-		var amountval = $("#amount").val();
-		var dateval = $("#date").val();
-		var timeval = $("#time").val();
+		document.getElementById('maak').style.display = 'none'; 
+		document.getElementById('form').style.display = 'block';
+		e.preventDefault();
 	});
-	*/
+
+	$("#aanmaken").on("click", function(e)
+	{
+		document.getElementById('maak').style.display = 'block'; 
+		document.getElementById('form').style.display = 'none';
+	});
+	
 });
 
