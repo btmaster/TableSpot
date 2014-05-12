@@ -8,21 +8,21 @@
 			{
 				include_once("classes/RestaurantHouder.class.php");
 				$restaurant = new RestaurantHouder();
-				$restaurant->Firstname=$_POST['firstname'];
-				$restaurant->Lastname=$_POST['lastname'];
-				$restaurant->Email=$_POST['email'];
-				$restaurant->Password=$_POST['password'];
-				$restaurant->Passwordcheck=$_POST['passwordcheck'];
+				$restaurant->Firstname=htmlspecialchars($_POST['firstname']);
+				$restaurant->Lastname=htmlspecialchars($_POST['lastname']);
+				$restaurant->Email=htmlspecialchars($_POST['email']);
+				$restaurant->Password=htmlspecialchars($_POST['password']);
+				$restaurant->Passwordcheck=htmlspecialchars($_POST['passwordcheck']);
 				$restaurant->Save();
 			} else {
 				include_once("classes/Customer.class.php");
 				$customer = new Customer();
-				$customer->Firstname=$_POST['firstname'];
-				$customer->Lastname=$_POST['lastname'];
-				$customer->Email=$_POST['email'];
-				$customer->Password=$_POST['password'];
-				$customer->Passwordcheck=$_POST['passwordcheck'];
-				$customer->Phone=$_POST['phone'];
+				$customer->Firstname=htmlspecialchars($_POST['firstname']);
+				$customer->Lastname=htmlspecialchars($_POST['lastname']);
+				$customer->Email=htmlspecialchars($_POST['email']);
+				$customer->Password=htmlspecialchars($_POST['password']);
+				$customer->Passwordcheck=htmlspecialchars($_POST['passwordcheck']);
+				$customer->Phone=htmlspecialchars($_POST['phone']);
 				$customer->Save();
 			}
 			

@@ -69,10 +69,10 @@
 			
 				$sql = "insert INTO restaurant_keeper (Email, Password, Firstname,Lastname)
 				VALUES(
-					'".$this->m_sEmail."',
-					'".$this->m_sPasswordcheck."',
-					'".$this->m_sFirstname."',
-					'".$this->m_sLastname."');";
+					'".$db->conn->real_escape_string($this->m_sEmail)."',
+					'".$db->conn->real_escape_string($this->m_sPasswordcheck)."',
+					'".$db->conn->real_escape_string($this->m_sFirstname)."',
+					'".$db->conn->real_escape_string($this->m_sLastname)."');";
 				$db->conn->query($sql);
 				header("Location:Index.php");
 			} else
@@ -86,8 +86,8 @@
 		{
 			$db = new Db();
 			$sql = "SELECT * FROM restaurant_keeper WHERE Email = 
-			'".$this->m_sEmail."'
-			and Password ='".$this->m_sPassword."';";
+			'".$db->conn->real_escape_string($this->m_sEmail)."'
+			and Password ='".$db->conn->real_escape_string($this->m_sPassword)."';";
 			$login = $db->conn->query($sql);
 			$numberofRows = $login->num_rows;
 
@@ -99,7 +99,7 @@
 				header("Location: Home.php");
 			} else {
 				$sql = "SELECT * FROM customers WHERE Email = 
-			'".$this->m_sEmail."'and Password ='".$this->m_sPassword."';";
+			'".$db->conn->real_escape_string($this->m_sEmail)."'and Password ='".$db->conn->real_escape_string($this->m_sPassword)."';";
 				$login = $db->conn->query($sql);
 				$numberofRows = $login->num_rows;
 
@@ -121,7 +121,7 @@
 		public function Select($email)
 		{
 			$db = new Db();
-			$sql = "SELECT * FROM restaurant_keeper WHERE Email = '".$email."';";
+			$sql = "SELECT * FROM restaurant_keeper WHERE Email = '".$db->conn->real_escape_string($email)."';";
 			$select = $db->conn->query($sql);
 			$numberofRows = $select->num_rows;
 

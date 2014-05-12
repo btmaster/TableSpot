@@ -46,16 +46,16 @@
 		{
 			$db = new Db();
 			$sql = "insert into gerecht(Gerecht, Prijs, FK_Menu_ID) VALUES (
-				'".$this->m_sGerecht."',
-				'".$this->m_iPrijs."',
-				'".$this->m_iMenu."');";
+				'".$db->conn->real_escape_string($this->m_sGerecht)."',
+				'".$db->conn->real_escape_string($this->m_iPrijs)."',
+				'".$db->conn->real_escape_string($this->m_iMenu)."');";
 			$db->conn->query($sql);
 		}
 
 		public function GetAll($menu)
 		{
 			$db = new Db();
-			$sql = "SELECT * FROM gerecht WHERE FK_Menu_ID = '" . $menu . "';";
+			$sql = "SELECT * FROM gerecht WHERE FK_Menu_ID = '" . $db->conn->real_escape_string($menu) . "';";
 			
 			$select = $db->conn->query($sql);
 			return $select;

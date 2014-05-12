@@ -3,8 +3,8 @@
 	{
 		private $m_sHost = "localhost";
 		private $m_sUser = "root";
-		private $m_sPassword = "";
-		private $m_sDatabase = "tablespot";
+		private $m_sPassword = "test";
+		private $m_sDatabase = "TableSpot";
 		public $conn;
 
 

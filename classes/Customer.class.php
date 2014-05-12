@@ -78,11 +78,11 @@
 			
 				$sql = "insert INTO customers (Email, Password, Firstname, Lastname, Phone)
 				VALUES(
-					'".$this->m_sEmail."',
-					'".$this->m_sPasswordcheck."',
-					'".$this->m_sFirstname."',
-					'".$this->m_sLastname."',
-					'".$this->m_iPhone."');";
+					'".$db->conn->real_escape_string($this->m_sEmail)."',
+					'".$db->conn->real_escape_string($this->m_sPasswordcheck)."',
+					'".$db->conn->real_escape_string($this->m_sFirstname)."',
+					'".$db->conn->real_escape_string($this->m_sLastname)."',
+					'".$db->conn->real_escape_string($this->m_iPhone)."');";
 				$db->conn->query($sql);
 				header("Location:Index.php");
 			} else
@@ -95,7 +95,7 @@
 		public function Select($email)
 		{
 			$db = new Db();
-			$sql = "SELECT * FROM customers WHERE Email = '".$email."';";
+			$sql = "SELECT * FROM customers WHERE Email = '".$db->conn->real_escape_string($email)."';";
 			$select = $db->conn->query($sql);
 			$numberofRows = $select->num_rows;
 			
@@ -114,7 +114,7 @@
 		public function SelectOne($id)
 		{
 			$db = new Db();
-			$sql = "SELECT * FROM customers WHERE ID_Customer = '".$id."';";
+			$sql = "SELECT * FROM customers WHERE ID_Customer = '". $db->conn->real_escape_string($id)."';";
 			$select = $db->conn->query($sql);
 			$numberofRows = $select->num_rows;
 			

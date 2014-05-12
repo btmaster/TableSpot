@@ -120,12 +120,12 @@
 
 					$db = new Db();
 					$sql = "INSERT INTO reservations(Date,Time, AmountPeople,FK_Customer_ID,FK_Table_ID,FK_Restaurant_ID) VALUES (
-						'".$this->m_dDate."',
-						'".$this->m_tTime."',
-						'".$this->m_iAmount."',
-						'".$this->m_iCustomer."',
-						'".$this->m_iTable."',
-						'".$this->m_iRestaurant."');";
+						'".$db->conn->real_escape_string($this->m_dDate)."',
+						'".$db->conn->real_escape_string($this->m_tTime)."',
+						'".$db->conn->real_escape_string($this->m_iAmount)."',
+						'".$db->conn->real_escape_string($this->m_iCustomer)."',
+						'".$db->conn->real_escape_string($this->m_iTable)."',
+						'".$db->conn->real_escape_string($this->m_iRestaurant)."');";
 					$db->conn->query($sql);
 					header("Location: Overview.php");
 				}
@@ -136,21 +136,21 @@
 		public function Delete($id)
 		{
 			$db = new Db();
-			$sql = "DELETE FROM reservations WHERE ID_Resevation = '".$id."';";
+			$sql = "DELETE FROM reservations WHERE ID_Resevation = '".$db->conn->real_escape_string($id)."';";
 			$db->conn->query($sql);
 		}
 
 		public function DeleteAll($restaurant)
 		{
 			$db = new Db();
-			$sql = "DELETE FROM reservations WHERE FK_Restaurant_ID ='".$restaurant."';";
+			$sql = "DELETE FROM reservations WHERE FK_Restaurant_ID ='".$db->conn->real_escape_string($restaurant)."';";
 			$db->conn->query($sql);
 		}
 
 		public function SelectOne($id)
 		{
 			$db = new Db();
-			$sql = "SELECT * FROM reservations WHERE ID_Resevation = '".$id."';";
+			$sql = "SELECT * FROM reservations WHERE ID_Resevation = '".$db->conn->real_escape_string($id)."';";
 			//throw new Exception($sql);
 			
 			$select = $db->conn->query($sql);
@@ -170,7 +170,7 @@
 		public function SelectReservaties($customer)
 		{
 			$db = new Db();
-			$sql = "SELECT * FROM reservations WHERE FK_Customer_ID = " . $customer . ";";
+			$sql = "SELECT * FROM reservations WHERE FK_Customer_ID = " . $db->conn->real_escape_string($customer) . ";";
 			$select = $db->conn->query($sql);
 			return $select;
 		}
@@ -178,14 +178,14 @@
 		public function GetAllReservations($restaurant)
 		{
 			$db = new Db();
-			$sql = "Select * from reservations where FK_Restaurant_ID = '" . $restaurant . "';";
+			$sql = "Select * from reservations where FK_Restaurant_ID = '" . $db->conn->real_escape_string($restaurant) . "';";
 		    return $db->conn->query($sql);
 		}
 
 		public function GetAllTables($tables)
 		{
 			$db = new Db();
-			$sql = "Select * from reservations where FK_Table_ID = '" . $tables . "';";			
+			$sql = "Select * from reservations where FK_Table_ID = '" . $db->conn->real_escape_string($tables) . "';";			
 		    return $db->conn->query($sql);
 		}
 	}

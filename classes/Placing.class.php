@@ -46,16 +46,16 @@
 		{
 			$db = new Db();
 			$sql = "insert into placing(Name, Actif, FK_Restaurant_id) VALUES (
-				'".$this->m_sName."',
-				'".$this->m_bActif."',
-				'".$this->m_iRestaurant."');";
+				'".$db->conn->real_escape_string($this->m_sName)."',
+				'".$db->conn->real_escape_string($this->m_bActif)."',
+				'".$db->conn->real_escape_string($this->m_iRestaurant)."');";
 			$db->conn->query($sql);
 		}
 
 		public function GetPlace($FK_Restaurant_id)
 		{
 			$db = new Db();
-			$sql = "SELECT * FROM placing WHERE FK_Restaurant_id = '" . $FK_Restaurant_id."' AND Actif = 1;";
+			$sql = "SELECT * FROM placing WHERE FK_Restaurant_id = '" . $db->conn->real_escape_string($FK_Restaurant_id)."' AND Actif = 1;";
 			$select = $db->conn->query($sql);			
 
 			$numberofRows = $select->num_rows;
@@ -91,7 +91,7 @@
 		public function GetAllRestaurant($FK_Restaurant_id)
 		{
 			$db = new Db();
-			$sql = "SELECT * FROM placing WHERE FK_Restaurant_id = '" . $FK_Restaurant_id."';";
+			$sql = "SELECT * FROM placing WHERE FK_Restaurant_id = '" . $db->conn->real_escape_string($FK_Restaurant_id)."';";
 			$select = $db ->conn->query($sql);
 			return $select;
 		}
@@ -99,14 +99,14 @@
 		public function UpdateAll($FK_Restaurant_id)
 		{
 			$db = new Db();
-			$sql = "UPDATE placing SET Actif = '0' WHERE FK_Restaurant_id = '" . $FK_Restaurant_id."';";
+			$sql = "UPDATE placing SET Actif = '0' WHERE FK_Restaurant_id = '" . $db->conn->real_escape_string($FK_Restaurant_id)."';";
 			$db->conn->query($sql);
 		}
 
 		public function UpdateActive($id)
 		{
 			$db = new Db();
-			$sql = "UPDATE placing SET Actif = '1' WHERE ID_Placing = '".$id."';";
+			$sql = "UPDATE placing SET Actif = '1' WHERE ID_Placing = '".$db->conn->real_escape_string($id)."';";
 			$db->conn->query($sql);
 		}
 

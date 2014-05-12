@@ -43,9 +43,9 @@
 		{
 			$db = new Db();
 			$sql = "INSERT INTO menu (Name, Discription, FK_Restaurants_ID) VALUES(
-				'".$this->m_sName."',
-				'".$this->m_sDescription."',
-				'".$this->m_iRestaurant."');";
+				'".$db->conn->real_escape_string($this->m_sName)."',
+				'".$db->conn->real_escape_string($this->m_sDescription)."',
+				'".$db->conn->real_escape_string($this->m_iRestaurant)."');";
 			
 			$db->conn->query($sql);
 			//header("Location: Home.php");
@@ -55,7 +55,7 @@
 		public function GetLatest($restaurant)
 		{
 			$db = new Db();
-			$sql = "SELECT * FROM menu WHERE FK_Restaurants_ID = '".$restaurant."' ORDER BY ID_Menu DESC LIMIT 1;";
+			$sql = "SELECT * FROM menu WHERE FK_Restaurants_ID = '".$db->conn->real_escape_string($restaurant)."' ORDER BY ID_Menu DESC LIMIT 1;";
 			$select = $db->conn->query($sql);
 			//throw new Exception($sql);
 			

@@ -13,7 +13,7 @@
 		{
 			include_once("classes/Placing.class.php");
 			$placing = new Placing();
-			$placing->name = $_POST['name'];
+			$placing->name = htmlspecialchars($_POST['name']);
 			$placing->actif = 0;
 			$placing->restaurant = $_SESSION['restaurant'];
 			$placing->Save();
@@ -28,7 +28,7 @@
 			for ($i = 1; $i<=$_SESSION['amount'];$i++)
 			{
 				$tablespot->status = 0;
-				$tablespot->place = $_POST["amount".$i];
+				$tablespot->place = htmlspecialchars($_POST["amount".$i]);
 				$tablespot->placing = $_SESSION['placingId'];
 				$tablespot->Save();
 			}

@@ -28,9 +28,9 @@
 				if(!empty($_POST))
 				{
 						$reservation = new Reservation();
-						$reservation->time = $_POST['time'];
-						$reservation->date = $_POST['date'];
-						$reservation->amount = $_POST['amount'];
+						$reservation->time = htmlspecialchars($_POST['time']);
+						$reservation->date = htmlspecialchars($_POST['date']);
+						$reservation->amount = htmlspecialchars($_POST['amount']);
 						$reservation->customer = $User['ID_Customer'];
 						$reservation->table = $TablespotId;
 						$reservation->restaurant = $RestaurantId;

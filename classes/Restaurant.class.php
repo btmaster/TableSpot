@@ -468,6 +468,13 @@
     		return $db->conn->query($sql);
 		}
 
+		public function GetRestaurantEigen($keeper)
+		{
+			$db = new Db();
+			$sql = "Select * from restaurants where FK_Keeper_ID = '".$keeper."';";
+			return $db->conn->query($sql);
+		}
+
 		
 		
 		public function GetRestaurant($id)
