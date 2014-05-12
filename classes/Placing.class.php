@@ -15,7 +15,7 @@
 				break;
 
 				case 'actif':
-				$this->m_bActif = $p_vValue;
+				$this->m_bActif = 1;
 				break;
 
 				case 'restaurant':

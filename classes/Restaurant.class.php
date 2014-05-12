@@ -384,7 +384,7 @@
 				/* maandag */
 				
 				$sql = "insert into openinghours ( Dag, OpenHour, CloseHour, Status, FK_restaurants_ID) VALUES (
-					'Maandag',
+					'Monday',
 					'". $db->conn->real_escape_string($this->m_iOpeningMaandag) ."',
 					'". $db->conn->real_escape_string($this->m_iClosingMaandag) ."',
 					'". $db->conn->real_escape_string($this->m_igeslotenMaandag) ."',
@@ -395,7 +395,7 @@
 
 				/* dinsdag */
 				$sql = "insert into openinghours ( Dag, OpenHour, CloseHour, Status, FK_restaurants_ID) VALUES (
-					'Dinsdag',
+					'Tuesday',
 					'". $db->conn->real_escape_string($this->m_iOpeningDinsdag) ."',
 					'". $db->conn->real_escape_string($this->m_iClosingDinsdag) ."',
 					'". $db->conn->real_escape_string($this->m_igeslotenDinsdag) ."',
@@ -405,7 +405,7 @@
 					
 				/* Woensdag */
 				$sql = "insert into openinghours ( Dag, OpenHour, CloseHour, Status, FK_restaurants_ID) VALUES (
-					'Woensdag',
+					'Wednesday',
 					'". $db->conn->real_escape_string($this->m_iOpeningWoensdag) ."',
 					'". $db->conn->real_escape_string($this->m_iClosingWoensdag) ."',
 					'". $db->conn->real_escape_string($this->m_igeslotenWoensdag) ."',
@@ -415,7 +415,7 @@
 					
 				/* Donderdag */
 				$sql = "insert into openinghours ( Dag, OpenHour, CloseHour, Status, FK_restaurants_ID) VALUES (
-					'Donderdag',
+					'Thursday',
 					'". $db->conn->real_escape_string($this->m_iOpeningDonderdag) ."',
 					'". $db->conn->real_escape_string($this->m_iClosingDonderdag) ."',
 					'". $db->conn->real_escape_string($this->m_igeslotenDonderdag) ."',
@@ -425,7 +425,7 @@
 					
 				/* Vrijdag */
 				$sql = "insert into openinghours ( Dag, OpenHour, CloseHour, Status, FK_restaurants_ID) VALUES (
-					'Vrijdag',
+					'Friday',
 					'". $db->conn->real_escape_string($this->m_iOpeningVrijdag) ."',
 					'". $db->conn->real_escape_string($this->m_iClosingVrijdag) ."',
 					'". $db->conn->real_escape_string($this->m_igeslotenVrijdag) ."',
@@ -435,7 +435,7 @@
 					
 				/* Zaterdag */
 				$sql = "insert into openinghours ( Dag, OpenHour, CloseHour, Status, FK_restaurants_ID) VALUES (
-					'Zaterdag',
+					'Saturday',
 					'". $db->conn->real_escape_string($this->m_iOpeningZaterdag) ."',
 					'". $db->conn->real_escape_string($this->m_iClosingZaterdag) ."',
 					'". $db->conn->real_escape_string($this->m_igeslotenZaterdag) ."',
@@ -445,7 +445,7 @@
 					
 				/* Zondag */
 				$sql = "insert into openinghours ( Dag, OpenHour, CloseHour, Status, FK_restaurants_ID) VALUES (
-					'Zondag',
+					'Sunday',
 					'". $db->conn->real_escape_string($this->m_iOpeningZondag) ."',
 					'". $db->conn->real_escape_string($this->m_iClosingZondag) ."',
 					'". $db->conn->real_escape_string($this->m_igeslotenZondag) ."',
@@ -495,7 +495,7 @@
 		public function GetAllClosing($restaurant)
 		{
 			$db = new Db();
-			$sql = "SELECT * FROM openinghours WHERE FK_restaurants_ID = '" . $db->conn->real_escape_string($restaurant) . "' AND Status = 1;";
+			$sql = "SELECT * FROM openinghours WHERE FK_restaurants_ID = '" . $db->conn->real_escape_string($restaurant) . "'";
 			$select = $db->conn->query($sql);
 			return $select;
 		}

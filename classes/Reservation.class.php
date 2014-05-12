@@ -20,6 +20,7 @@
 
 				case 'date':
 				$this->m_dDate = $p_vValue;
+				
 				break;
 
 				case 'amount':
@@ -91,33 +92,43 @@
 			{
 				throw new Exception("Er zijn aan deze tafel niet genoeg plaatsen voor het aantal personen");	
 			} else {
-				$day = date('l', strtotime($date));
+				$day = date('l', strtotime($this->m_dDate));
 				$allClosing = $restaurant->GetAllClosing($this->m_iRestaurant);
-
-				while ($oneClosing = $allClosing->fetch_assoc())
+				//throw new Exception($day);
+				if($this->m_dDate < date("Y-m-d"))
 				{
-					throw new Exception($day);
-					
-					if($day)
-					{
-						throw new Exception("De datum ligt in het verleden");
-					} else {
-						if($this->m_tTime > $restaurantId['Opening'] && $this->m_tTime < $restaurantId['Closing'])
-						{
-							$db = new Db();
-							$sql = "INSERT INTO reservations(Date,Time, AmountPeople,FK_Customer_ID,FK_Table_ID,FK_Restaurant_ID) VALUES (
-								'".$this->m_dDate."',
-								'".$this->m_tTime."',
-								'".$this->m_iAmount."',
-								'".$this->m_iCustomer."',
-								'".$this->m_iTable."',
-								'".$this->m_iRestaurant."');";
-							$db->conn->query($sql);
-						} else {
-							throw new Exception("You can only make a reservation between " . $restaurantId['Opening'] . " and " . $restaurantId['Closing']);
-						}
-						
+					throw new Exception("You can't make a reservation in the past.");
+				} else {
+					while ($oneClosing = $allClosing->fetch_assoc())
+					{ 
+							if(($day == $oneClosing['Dag']))
+							{
+								if($oneClosing['Status'] == 1)
+								{
+									throw new Exception("The restaurant is closed on " . $oneClosing['Dag'] . ".");	
+								}
+
+								if($this->m_tTime < $oneClosing['OpenHour'] OR $this->m_tTime > $oneClosing['CloseHour'])
+								{
+									throw new Exception("You can only make reservations between " . $oneClosing['OpenHour'] . " and " . $oneClosing['CloseHour']);
+								}
+
+							}
+							
+							 
+							
 					}	
+
+					
+					$db = new Db();
+					$sql = "INSERT INTO reservations(Date,Time, AmountPeople,FK_Customer_ID,FK_Table_ID,FK_Restaurant_ID) VALUES (
+						'".$this->m_dDate."',
+						'".$this->m_tTime."',
+						'".$this->m_iAmount."',
+						'".$this->m_iCustomer."',
+						'".$this->m_iTable."',
+						'".$this->m_iRestaurant."');";
+					$db->conn->query($sql);
 				}
 				
 			}

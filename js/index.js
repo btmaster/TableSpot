@@ -49,9 +49,6 @@ function getTable()
 			//update(msg);
 		});
 
-	request.fail(function(jqXHR, textStatus) {
-			alert( "Request failed: " + textStatus );
-		});
 
 
 }
@@ -76,9 +73,7 @@ $(document).ready(function()
 				location.reload();
 			});
 
-			request.fail(function(jqXHR, textStatus) {
-				alert( "Request failed: " + textStatus );
-			});
+			
 
 			e.preventDefault();
 	});
@@ -100,9 +95,6 @@ $(document).ready(function()
 			location.reload();
 		});
 
-		request.fail(function(jqXHR, textStatus) {
-			alert( "Request failed: " + textStatus );
-		});
 
 		e.preventDefault();
 	});
@@ -129,9 +121,6 @@ $(document).ready(function()
 		    	location.reload();
 		    });
 
-		    request.fail(function(jqXHR, textStatus) {
-		    	alert( "Request failed: " + textStatus );
-		    });	
 		}
 		
 	});
