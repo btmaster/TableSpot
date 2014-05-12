@@ -67,7 +67,7 @@
 					return $oneSelect;
 				}
 			} else {
-				throw new Exception("Geen opstelling gevonden");
+				throw new Exception("Didn't found a table");
 			}
 		}
 

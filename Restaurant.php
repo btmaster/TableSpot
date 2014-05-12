@@ -171,7 +171,7 @@ include_once("include/navincludeHouder.php");
 
 					$oneCustomer = $customer->SelectOne($Reservation["FK_Customer_ID"]);
 					echo "<div class='divCell'>" . $oneCustomer["Firstname"] . " " . $oneCustomer["Lastname"] ."</div>";
-					echo "<div class='divCell' id='listitem_Verwijder'><a href='#' data-id='" . $Reservation["ID_Resevation"] . "' class='delete'>Delete</a>";
+					echo "<div class='divCell' id='listitem_Verwijder'><a href='#' data-id='" . $Reservation["ID_Resevation"] . "' class='delete'>Delete</a></div>";
 					echo "</div>";
 				}
 			?>
@@ -214,11 +214,6 @@ include_once("include/navincludeHouder.php");
 		} catch(Exception $e)
 		{
 			$error = $e->getMessage();
-		}
-
-		if(isset($error))
-		{
-			echo "<p>". $error . "</p>";
 		}
 
 		?>
