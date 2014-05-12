@@ -132,38 +132,56 @@ body{
 
 
 /*   lijst drukken  */
-#sortable_list
-{
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	font: 11px Arial, Helvetic, Geneva, sans-serif;
-	float: left;
+.divTable{
+	display:table;         
+	width:auto;                          
+	border-spacing:5px;/*cellspacing:poor IE support for  this*/
 }
-
-#sortable_list li.header div
-{
-	background-color:  #ccc;
+.divRow{
+  display:table-row;
+  width:auto;
+  clear:both;
+  	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 75%;
+	margin-bottom: 10px;
+}
+.divCell{
+  float:left;/*fix for  buggy browsers*/
+  display:table-column;         
+  width:150px;  
+  	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
 	font-weight: bold;
-	cursor: default;
+	font-size: 100%;
+	margin-bottom: 10px;  
+	padding-bottom: 10px;
+	border-bottom: 1px solid;
 }
 
-#sortable_list li div
+.list_1
 {
-	display: block;
-	float: left;
-	border-bottom: 1px solid #ccc;
-	border-right: 1px solid #ccc;
-	padding: 3px 5px;
+	padding: 15px;
+	margin: 15px;
+	background-color: #ECF0F1;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+.list_1 h1
+{
+  	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 100%;
+	margin-bottom: 10px;
+}
+.list_1 h2
+{
+  	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 100%;
+	margin-bottom: 10px;
 }
 
-#sortable_list li div.listitem_Tafelnummer{width: 150px; border-left: 1px solid #ccc;}
-#sortable_list li div.listitem_Plaatsen{width: 300px;}
-#sortable_list li div.listitem_Status{width: 250px;}
-
-.clearfix {	
-	float: left;
-}
 
 /* navigatie */ 
 nav{
@@ -398,7 +416,7 @@ margin: 8px 0px 8px 0px;
 		border:1px solid #16A085;
 	}
 
-<<<<<<< HEAD
+
 	/* klant*/
 
 	.lijstrestaurants

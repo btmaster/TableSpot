@@ -63,12 +63,14 @@
 </head>
 <body>
 	<!-- Restaurant -->
-	<div id="restauranthouder">
-<?php
+	<div id="restauranthouder">	
+		<?php
  
 include_once("include/navincludeHouder.php");
  
 ?>
+<div id="container">
+<div class="list_1">
 	<h1>Arrangement</h1>
 	<h2>Select your arrangement of tables</h2>
 	<select name="place" id="place">
@@ -96,12 +98,15 @@ include_once("include/navincludeHouder.php");
 
 		?>
 	</select>
-	<ul id="sortable_list">
-		<li id="listitem"  class="clearfix header">
-			<div class="listitem_Tafelnummer">TableNumber</div>
-			<div class="listitem_Plaatsen">Amount of places</div>
-			<div class="listitem_Status">Availability</div>
-		</li>
+</div>
+	<div class="list_1">
+		<h1>Spots</h1>
+	<div class="divTable">
+		<div class="headRow">
+			<div class="divCell">TableNumber</div>
+			<div class="divCell">Amount of places</div>
+			<div class="divCell">Availability</div>
+		</div>
 		<?php
 		try{
 			if ($_SESSION['rol'] == "restaurant_keeper")
@@ -118,16 +123,16 @@ include_once("include/navincludeHouder.php");
 				$selectTablespot = $tablespot->GetTablePlace($onePlacing['ID_Placing']);
 				while ($freespots = $selectTablespot->fetch_assoc())
 				{
-					echo "<li id='listitem_". $freespots["ID_Table"] ."' class='clearfix'>";			
-					echo "<div class='listitem_Tafelnummer'>". $freespots["ID_Table"] ."</div>";
-					echo "<div class='listitem_Plaatsen'>". $freespots["Place"] ."</div>";
+					echo "<div id='listitem_". $freespots["ID_Table"] ."' class='divRow'>";			
+					echo "<div class='divCell'>". $freespots["ID_Table"] ."</div>";
+					echo "<div class='divCell'>". $freespots["Place"] ."</div>";
 					if ($freespots['Status'] == 0)
 					{
-						echo "<div class='listitem_Status'>" . "Free" ."</div>";
+						echo "<div class='divCell'>" . "Free" ."</div>";
 					} else {
-						echo "<div class='listitem_Status'>" . "Reserved" ."</div>";
+						echo "<div class='divCell'>" . "Reserved" ."</div>";
 					}
-					echo "</li>";
+					echo "</div>";
 				}
 			}
 				
@@ -138,16 +143,18 @@ include_once("include/navincludeHouder.php");
 		}
 		?>
 		
-	</ul>
-	<div>
+	</div>
+	</div>
+	<div class="list_1">
 		<h1>Reservations</h1>
-			<ul id="sortable_list">
-			<li id="listitem"  class="clearfix header">
-				<div class="listitem_Tafelnummer">TableNumber</div>
-				<div class="listitem_Plaatsen">Amount of persons</div>
-				<div class="listitem_Status">Date</div>
-				<div class="listitem_Status">Name</div>
-			</li>
+			<div class="divTable">
+					<div class="headRow">
+				<div class="divCell">TableNumber</div>
+				<div class="divCell">Amount of persons</div>
+				<div class="divCell">Date</div>
+				<div class="divCell">Name</div>
+				<div class="divCell">Verwijderen</div>
+			</div>
 			<?php
 				include_once("classes/Reservation.class.php");
 				include_once("classes/Customer.class.php");
@@ -157,28 +164,29 @@ include_once("include/navincludeHouder.php");
 
 				while($Reservation = $res->fetch_assoc())
 			    {
-					echo "<li id='listitem_". $Reservation["ID_Resevation"] ."' class='clearfix'>";			
-					echo "<div class='listitem_Tafelnummer'>". $Reservation["FK_Table_ID"] ."</div>";
-					echo "<div class='listitem_Plaatsen'>". $Reservation["AmountPeople"] ."</div>";
-					echo "<div class='listitem_Status'>" . $Reservation["Date"] ."</div>";
+					echo "<div id='listitem_". $Reservation["ID_Resevation"] ."' class='divRow'>";			
+					echo "<div class='divCell'>". $Reservation["FK_Table_ID"] ."</div>";
+					echo "<div class='divCell'>". $Reservation["AmountPeople"] ."</div>";
+					echo "<div class='divCell'>" . $Reservation["Date"] ."</div>";
 
 					$oneCustomer = $customer->SelectOne($Reservation["FK_Customer_ID"]);
-					echo "<div class='listitem_Status'>" . $oneCustomer["Firstname"] . " " . $oneCustomer["Lastname"] ."</div>";
-					echo "<div class='listitem_Verwijder'><a href='#' data-id='" . $Reservation["ID_Resevation"] . "' class='delete'>Delete</a>";
-					echo "</li>";
+					echo "<div class='divCell'>" . $oneCustomer["Firstname"] . " " . $oneCustomer["Lastname"] ."</div>";
+					echo "<div class='divCell' id='listitem_Verwijder'><a href='#' data-id='" . $Reservation["ID_Resevation"] . "' class='delete'>Delete</a>";
+					echo "</div>";
 				}
 			?>
 			
-		</ul>
+		</div>
 	</div>
 </div>
-
+</div>
 <div id="user">
-	<?php
+<?php
 	 
 	include_once("include/navincludeKlant.php");
 	 
-	?>
+	?>	<div id="container">
+	
 		<h1>Menukaart</h1>
 		<?php 
 		try{
@@ -225,12 +233,14 @@ include_once("include/navincludeHouder.php");
 		<input type="time" name="time" id="time" class="search" data-id="time" value="<?php echo date('H:i:s') ?>"><br/>
 		<div id="tafels">
 		</div>
-	</div>
+	
 	<?php
 		if(isset($error))
 		{
 			echo "<p>$error</p>";
 		}
 		?>
+	</div>
+</div>
 </body>
 </html>
