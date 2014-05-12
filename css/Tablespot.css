@@ -183,7 +183,7 @@ nav li a{
 	text-decoration: none;
 
 }
-nav li a .active
+nav li .active
 {
 	color: #ffffff;
 	background-color: #2ECC71;
