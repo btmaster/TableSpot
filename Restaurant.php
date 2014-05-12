@@ -23,20 +23,24 @@
 				
 				while ($oneReservation = $allReservations->fetch_assoc())
 				{
-					
-					if($oneReservation['Date'] === date("Y-m-d"))
+					if($oneReservation['Date'] < date("Y-m-d"))
 					{
-						$reservationTime = date('H:i:s', strtotime($oneReservation['Time'])+3600);
-
-						if ($reservationTime < $time)
+						$tablespotId = $reservation->SelectOne($oneReservation['ID_Resevation']);
+						$tablespot->Annulation($tablespotId['FK_Table_ID']);
+						$reservation->Delete($oneReservation['ID_Resevation']);
+					} else {
+						if($oneReservation['Date'] === date("Y-m-d"))
 						{
-							$tablespotId = $reservation->SelectOne($oneReservation['ID_Resevation']);
-							$tablespot = new Tablespot();
-							$tablespot->Annulation($tablespotId['FK_Table_ID']);
-							$reservation->Delete($oneReservation['ID_Resevation']);
-						} 
+							$reservationTime = date('H:i:s', strtotime($oneReservation['Time'])+3600);
+
+							if ($reservationTime < $time)
+							{
+								$tablespotId = $reservation->SelectOne($oneReservation['ID_Resevation']);
+								$tablespot->Annulation($tablespotId['FK_Table_ID']);
+								$reservation->Delete($oneReservation['ID_Resevation']);
+							} 
+						}
 					}
-					
 				}
 			}
 		} catch (Exception $e)
@@ -77,10 +81,7 @@ include_once("include/navincludeHouder.php");
 			{
 				if ($onePlacing['ID_Placing'] === $activePlacing['ID_Placing'])
 				{
-					//throw new Exception("ja");
-					
 					echo "<option value='" . $onePlacing['ID_Placing'] . "' selected>" . $onePlacing['Name'] . "</option>";
-
 				} else {
 					echo "<option value='" . $onePlacing['ID_Placing'] . "'>" . $onePlacing['Name'] . "</option>";
 				}
@@ -167,14 +168,21 @@ include_once("include/navincludeHouder.php");
 	include_once("include/navincludeKlant.php");
 	 
 	?>
-		<h1>Vrije tafels</h1>
-
+		<h1>Free Tables</h1>
+		<label for="amount">Amount of people</label>
+		<input type="text" name="amount" id="amount" class="search" data-id="amount" value="2">
+		<label for="date">Date of reservation</label>
+		<input type="date" name="date" id="date" class="search" data-id="date" value=<?php echo date("Y-m-d") ?>>
+		<label for="time">Time</label>
+		<input type="time" name="time" id="time" class="search" data-id="time" value="<?php echo date('H:i:s') ?>"><br/>
+		<div id="tafels">
 		<?php 
 		try{
 
 
 			if($_SESSION['rol'] === "customer")
 			{
+				/*
 				$RestaurantId = $_SESSION['restaurant'];
 				include_once('classes/Placing.class.php');
 				$placing = new Placing();
@@ -185,15 +193,17 @@ include_once("include/navincludeHouder.php");
 				$selectTablespot = $tablespot->GetTableFree($onePlacing['ID_Placing']);
 				while ($Tablespot = $selectTablespot->fetch_assoc())
 				{
-					echo "Vrije Tafels:<br/>". "<a href='Reservation.php?id=" . $Tablespot['ID_Table'] . "'>Aantal personen: " . $Tablespot['Place'] . "</a><br/><br/>";
+					echo "Free table:<br/>". "<a href='Reservation.php?id=" . $Tablespot['ID_Table'] . "'>Aantal personen: " . $Tablespot['Place'] . "</a><br/><br/>";
 				}	
-				
+				*/
+
 			}
 		} catch (Exception $e)
 		{
 			$error = $e->getMessage();
 		}
 		?>
+		</div>
 	</div>
 	<?php
 		if(isset($error))

@@ -107,14 +107,20 @@
 			return $select;	
 		}
 
-		public function GetTableFree($FK_Placing_ID)
+		public function GetTableFree($FK_Placing_ID, $amount)
 		{
 			$db = new Db();
-			$sql = "SELECT * FROM tablesspots WHERE FK_Placing_ID = '".$FK_Placing_ID."'AND Status = 0;";
-			
+			$sql = "SELECT * FROM tablesspots WHERE FK_Placing_ID = '".$FK_Placing_ID."'AND Status = 0 AND Place >= '".$amount."';";
 			$select = $db->conn->query($sql);
 			return $select;
-			
+			/*$result_array=array();
+
+			while($row = $select->fetch_array())
+			{
+				$result_array[] = $row;
+			}
+			return($result_array);
+			*/
 		}
 
 		public function Reservation($id)

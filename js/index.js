@@ -11,8 +11,54 @@ function hide()
 	document.getElementById('lblphone').style.display = 'none';
 }
 
+function update(msg)
+{
+	var update ='';
+	alert(msg.tables.length);
+	for (var i = 0; i<msg.tables.length; i++)
+	{
+		update += "Free table:<br/>" + "<a href='Reservation.php?id=" + msg.tables[i][0] + "'>Aantal personen: " + msg.tables[i][4] + "</a><br/><br/>";
+		alert(update);
+	}
+
+	$("#tafels").html(update);
+}
+
+function getTable()
+{
+	var amountval = $("#amount").val();
+	var dateval = $("#date").val();
+	var timeval = $("#time").val();
+	var request = $.ajax
+		({
+			url: "ajax/Reservation.php",
+			type:"POST",
+			data:{amountval : amountval, dateval : dateval, timeval : timeval},
+			dataType : "json",
+
+		});
+	request.done(function(msg) {
+			var update ='';
+			//alert(msg.tables[0][1]);
+			for (var i = 0; i < msg.tables.length; i++)
+			{
+				update += "Free table:<br/>" + "<a href='Reservation.php?id=" + msg.tables[i][0] + "'>Aantal personen: " + msg.tables[i][4] + "</a><br/><br/>";
+			}
+
+			$("#tafels").html(update);
+			//update(msg);
+		});
+
+	request.fail(function(jqXHR, textStatus) {
+			alert( "Request failed: " + textStatus );
+		});
+
+
+}
+
 $(document).ready(function()
 {
+	getTable('');
 	$("a.annuleren").on("click", function(e)
 	{
 			var clickedLink = $(this);
@@ -26,7 +72,7 @@ $(document).ready(function()
 				dataType : "json",
 
 			});
-			request.done(function() {
+			request.done(function(msg) {
 				location.reload();
 			});
 
@@ -58,6 +104,12 @@ $(document).ready(function()
 			alert( "Request failed: " + textStatus );
 		});
 
+		e.preventDefault();
+	});
+
+	$(".search").on("change", function(e)
+	{
+		getTable('knop');
 		e.preventDefault();
 	});
 

@@ -159,7 +159,14 @@
 		public function GetAllReservations($restaurant)
 		{
 			$db = new Db();
-			$sql = "Select * from reservations where FK_Restaurant_ID = '" . $restaurant . "' ";
+			$sql = "Select * from reservations where FK_Restaurant_ID = '" . $restaurant . "';";
+		    return $db->conn->query($sql);
+		}
+
+		public function GetAllTables($tables)
+		{
+			$db = new Db();
+			$sql = "Select * from reservations where FK_Table_ID = '" . $tables . "';";			
 		    return $db->conn->query($sql);
 		}
 	}
