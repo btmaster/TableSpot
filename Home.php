@@ -87,7 +87,7 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="js/index.js" type="text/javascript"></script>
 </head>
-<header><h1>Tables Spot</h1><a href="Logout.php" alt="logout" id="logout">Logout</a></header>
+<header><h1>Table Spot</h1><a href="Logout.php" alt="logout" id="logout">Logout</a></header>
 <body>
 <!-- restauranthouder -->
 <div id="container">
@@ -101,14 +101,18 @@
 				<div class="profiel">
 					<H2>Restaurant owner</H2>
 					<?php 
-					include_once('classes/RestaurantHouder.class.php');
-					$restauranthouder = new RestaurantHouder();
-					$profiel = $restauranthouder->Select($_SESSION['email']);
- 
-                            echo "<h3>" .$profiel['Firstname'] . " ". $profiel['Lastname'] . "</h3>";
-                            echo "<p>" .$profiel['Email'] . "</p>";
+					if ($_SESSION['rol'] == "restaurant_keeper")
+					{
+						include_once('classes/RestaurantHouder.class.php');
+						$restauranthouder = new RestaurantHouder();
+						$profiel = $restauranthouder->Select($_SESSION['email']);
+						 
+						echo "<h3>" .$profiel['Firstname'] . " ". $profiel['Lastname'] . "</h3>";
+						echo "<p>" .$profiel['Email'] . "</p>";
+					}
+					
 
-                            ?>
+                 	?>
 
 				</div>
 				<div id="maak">
@@ -178,11 +182,12 @@
 				</div>
 			</div>
 		</div>
-<!-- ajax <li> Restaurant toevoegen</li> -->
 	<div class="collum_2">
 		<h1 class="titlelijst">Restaurants</h1>
 		<div class="sectie_1">
         <?php  
+        	if ($_SESSION['rol'] == "restaurant_keeper")
+        	{
            	include_once('classes/RestaurantHouder.class.php');
            	$restauranthouder = new RestaurantHouder();
            	$oneRestauranthouder = $restauranthouder->Select($_SESSION['email']);    
@@ -196,6 +201,7 @@
                             echo "<p>" .$restaurantdetails['Discription'] . "</p>";
  							echo "</div></a>";
                             }
+            }
 
 		?>
 		</div>
