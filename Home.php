@@ -21,11 +21,11 @@
 				} else {$restaurant->geslotenMaandag=0;}
 				$restaurant->OpeningMaandag=$_POST['Openingmaandag'];
 				$restaurant->ClosingMaandag=$_POST['ClosingMaandag'];
-				 if (
+				 /*if (
 				 $restaurant->OpeningMaandag < $restaurant->ClosingMaandag)
 				 {
 				 	echo "hannes";
-				 }
+				 }*/
 				if (!empty($_POST['geslotenDinsdag'])) 
 				{$restaurant->geslotenDinsdag=$_POST['geslotenDinsdag'];}
 				else {$restaurant->geslotenDinsdag=0;}
@@ -99,9 +99,9 @@
 			
 			<div class="sectie_1">
 				<div class="profiel">
-					<H2>Restauranthouder</H2>
-					<H3>Naam en Achternaam</H3>
-					<p>Email</p>
+					<H2>Restaurant owner</H2>
+					<H3>Name and firstname</H3>
+					<p>E-mail</p>
 				</div>
 				<div id="maak">
 					<p><a href="#" id="maakAan">Add Restaurant</a></p>				
@@ -192,7 +192,7 @@
 </div>
 <!-- klant -->
 	<div id="user">
-		<h1>Klant</h1>
+		<h1>Choose a restaurant to make a reservation.</h1>
 		<?php
 		include_once("include/navincludeKlant.php");
 		 

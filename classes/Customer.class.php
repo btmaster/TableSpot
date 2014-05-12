@@ -106,9 +106,27 @@
 					return $oneSelect;
 				}
 			} else {
-				throw new Exception("Gebruiker niet gevonden");	
+				throw new Exception("Client not found");	
 			}
 			
+		}
+
+		public function SelectOne($id)
+		{
+			$db = new Db();
+			$sql = "SELECT * FROM customers WHERE ID_Customer = '".$id."';";
+			$select = $db->conn->query($sql);
+			$numberofRows = $select->num_rows;
+			
+			if($numberofRows === 1)
+			{
+				while ($oneSelect = $select->fetch_assoc())
+				{	
+					return $oneSelect;
+				}
+			} else {
+				throw new Exception("Client not found");	
+			}
 		}
 	}
  ?>

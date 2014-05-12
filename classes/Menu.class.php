@@ -42,11 +42,31 @@
 		public function Save()
 		{
 			$db = new Db();
-			$sql = "INSERT INTO menu (Name, Discription, FK_Restaurants_ID) VALUES
+			$sql = "INSERT INTO menu (Name, Discription, FK_Restaurants_ID) VALUES(
 				'".$this->m_sName."',
 				'".$this->m_sDescription."',
-				'".$this->m_iRestaurant."';";
+				'".$this->m_iRestaurant."');";
+			
 			$db->conn->query($sql);
+			header("Location: Home.php");
+
+		}
+
+		public function GetLatest()
+		{
+			$db = new Db();
+			$sql = "SELECT * FROM menu ORDER BY ID_Menu DESC LIMIT 1;";
+			$select = $db->conn->query($sql);
+			
+			$numberofRows = $select->num_rows;
+
+			if($numberofRows == 1)
+			{
+				while ($oneSelect = $select->fetch_assoc())
+				{	
+					return $oneSelect;
+				}
+			}
 		}
 	}
 

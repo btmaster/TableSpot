@@ -56,13 +56,13 @@ include_once("include/navincludeHouder.php");
  
 ?>	
 	<div id="opstelling">
-	<h1>Opstelling maken</h1>
+	<h1>Make a arrangement of tables</h1>
 	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-	<label for="name">Naam van opstelling</label><br/>
+	<label for="name">Name of arrangement</label><br/>
 	<input type="text" name="name" id="name"><br/>
-	<label for="amounttabels">Aantal Tafels</label><br/>
+	<label for="amounttabels">Amount of tables</label><br/>
 	<input type="text" name="amounttabels" id="amounttabels"><br/>
-	<input type="submit" name="btnVoegtoe" value="Voeg toe"><br/>
+	<input type="submit" name="btnVoegtoe" value="Add"><br/>
 	</form>
 	</div>
 
@@ -71,17 +71,17 @@ include_once("include/navincludeHouder.php");
 		if (!empty($_POST['amounttabels']))
 		{
 			$_SESSION['amount'] = $_POST['amounttabels'];
-			echo "<div id='tafels'><h1>Tafel toevoegen</h1>";
+			echo "<div id='tafels'><h1>Add tables</h1>";
 	?>
 			<form action='<?php echo $_SERVER["PHP_SELF"]; ?>' method='post'>
 	<?php 
 			for ($i = 1; $i<=$_SESSION['amount']; $i++)
 			{
-				echo "<p>Tafel " . $i . "<label for='amount".$i."'>Aantal Plaatsen</label><br/>
+				echo "<p>Tafel " . $i . "<label for='amount".$i."'>Amount of places</label><br/>
 					<input type='text' name='amount" . $i . "' id='amount" . $i ."'><br/>";
 			}
 
-			echo "<input type='submit' name='btnVoegtoe' value='Voeg toe'><br/></form></div>";
+			echo "<input type='submit' name='btnVoegtoe' value='Add'><br/></form></div>";
 			echo "<style type='text/css'>
 				#opstelling{
 					display:none;
