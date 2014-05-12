@@ -101,8 +101,9 @@
 				<div class="profiel">
 					<H2>Restaurant owner</H2>
 					<?php 
-
-					$profiel = $restaurant->GetProfile();
+					include_once('classes/RestaurantHouder.class.php');
+					$restauranthouder = new RestaurantHouder();
+					$profiel = $restauranthouder->Select($_SESSION['email']);
  
                             echo "<h3>" .$profiel['Firstname'] . " ". $profiel['Lastname'] . "</h3>";
                             echo "<p>" .$profiel['Email'] . "</p>";
@@ -181,8 +182,11 @@
 	<div class="collum_2">
 		<h1 class="titlelijst">Restaurants</h1>
 		<div class="sectie_1">
-           <?php      
-			$res = $restaurant->GetAllRestaurants();
+        <?php  
+           	include_once('classes/RestaurantHouder.class.php');
+           	$restauranthouder = new RestaurantHouder();
+           	$oneRestauranthouder = $restauranthouder->Select($_SESSION['email']);    
+			$res = $restaurant->GetRestaurantEigen($oneRestauranthouder['ID_Keeper']);
 
                             while($restaurantdetails = $res->fetch_assoc())
                             {
