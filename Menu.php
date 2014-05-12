@@ -15,8 +15,8 @@
 			{
 				include_once("classes/Menu.class.php");
 				$menu = new Menu();
-				$menu->name = $_POST['name'];
-				$menu->description = $_POST['description'];
+				$menu->name = htmlspecialchars($_POST['name']);
+				$menu->description = htmlspecialchars($_POST['description']);
 				$menu->restaurant = $_SESSION['restaurant'];
 				$menu->Save();
 				echo "<style>
@@ -55,7 +55,7 @@
 	<div id="restauranthouder">
 <?php
  
-include_once("include/navincludehouder.php");
+include_once("include/navincludeHouder.php");
  
 ?>
 	<div id="menu">

@@ -5,8 +5,8 @@
 		try{
 			include_once("classes/RestaurantHouder.class.php");
 			$restaurant = new RestaurantHouder();
-			$restaurant->Email=$_POST['email'];
-			$restaurant->Password=$_POST['password'];
+			$restaurant->Email=htmlspecialchars($_POST['email']);
+			$restaurant->Password=htmlspecialchars($_POST['password']);
 			$restaurant->Login(); 
 
 		} catch(Exception $e)

@@ -64,11 +64,11 @@
 		{
 			$db = new Db();
 			$sql = "insert into tablesspots(Status, Time, Date, Place, FK_Placing_ID) VALUES (
-				'".$this->m_bStatus."',
-				'".$this->m_tTime."',
-				'".$this->m_dDate."',
-				'".$this->m_iPlace."',
-				'".$this->m_iPlacing."');";
+				'".$db->conn->real_escape_string($this->m_bStatus)."',
+				'".$db->conn->real_escape_string($this->m_tTime)."',
+				'".$db->conn->real_escape_string($this->m_dDate)."',
+				'".$db->conn->real_escape_string($this->m_iPlace)."',
+				'".$db->conn->real_escape_string($this->m_iPlacing)."');";
 			$db->conn->query($sql);
 		}
 
@@ -83,7 +83,7 @@
 		public function GetTable($id)
 		{
 			$db = new Db();
-			$sql = "SELECT * FROM tablesspots WHERE ID_Table = '".$id."'";
+			$sql = "SELECT * FROM tablesspots WHERE ID_Table = '".$db->conn->real_escape_string($id)."'";
 			$select = $db->conn->query($sql);
 			$numberofRows = $select->num_rows;
 
@@ -101,7 +101,7 @@
 		public function GetTablePlace($FK_Placing_ID)
 		{
 			$db = new Db();
-			$sql = "SELECT * FROM tablesspots WHERE FK_Placing_ID = '".$FK_Placing_ID."'";
+			$sql = "SELECT * FROM tablesspots WHERE FK_Placing_ID = '".$db->conn->real_escape_string($FK_Placing_ID)."'";
 			$select = $db->conn->query($sql);
 
 			return $select;	
@@ -110,24 +110,16 @@
 		public function GetTableFree($FK_Placing_ID, $amount)
 		{
 			$db = new Db();
-			$sql = "SELECT * FROM tablesspots WHERE FK_Placing_ID = '".$FK_Placing_ID."'AND Status = 0 AND Place >= '".$amount."';";
+			$sql = "SELECT * FROM tablesspots WHERE FK_Placing_ID = '".$db->conn->real_escape_string($FK_Placing_ID)."'AND Status = 0 AND Place >= '".$db->conn->real_escape_string($amount)."';";
 			$select = $db->conn->query($sql);
 			return $select;
-			/*$result_array=array();
-
-			while($row = $select->fetch_array())
-			{
-				$result_array[] = $row;
-			}
-			return($result_array);
-			*/
 		}
 
 		public function Reservation($id)
 		{
 			$db = new Db();
 			$sql = "UPDATE tablesspots SET
-			Status = 1 WHERE ID_Table = '".$id."';";
+			Status = 1 WHERE ID_Table = '".$db->conn->real_escape_string($id)."';";
 			$db->conn->query($sql);
 		}
 
@@ -135,7 +127,7 @@
 		{
 			$db = new Db();
 			$sql = "UPDATE tablesspots SET
-			Status = 0 WHERE ID_Table = '".$id."';";			
+			Status = 0 WHERE ID_Table = '".$db->conn->real_escape_string($id)."';";			
 			$db->conn->query($sql);
 		}
 

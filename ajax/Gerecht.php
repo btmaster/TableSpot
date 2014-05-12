@@ -10,8 +10,8 @@ try{
 
 	if(isset($_POST['gerecht']))
 	{
-		$gerecht->gerecht = $_POST['gerecht'];
-		$gerecht->prijs = $_POST['prijs'];
+		$gerecht->gerecht = htmlspecialchars($_POST['gerecht']);
+		$gerecht->prijs = htmlspecialchars($_POST['prijs']);
 		$gerecht->menu = $menuId;
 		$gerecht->Save();
 		$response['gerecht'] = $gerecht->gerecht;

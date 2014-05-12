@@ -10,57 +10,57 @@
 		if (!empty($_POST)) {
 			
 				$restaurant->Email=$_SESSION['email'];
-				$restaurant->Name=$_POST['Name'];
-				$restaurant->Categorie=$_POST['Categorie'];
-				$restaurant->Discription=$_POST['Discription'];
+				$restaurant->Name=htmlspecialchars($_POST['Name']);
+				$restaurant->Categorie=htmlspecialchars($_POST['Categorie']);
+				$restaurant->Discription=htmlspecialchars($_POST['Discription']);
 
 				
 				if (!empty($_POST['geslotenMaandag'])) 
 				{
-					$restaurant->geslotenMaandag=$_POST['geslotenMaandag'];
+					$restaurant->geslotenMaandag=htmlspecialchars($_POST['geslotenMaandag']);
 				} else {$restaurant->geslotenMaandag=0;}
-				$restaurant->OpeningMaandag=$_POST['Openingmaandag'];
-				$restaurant->ClosingMaandag=$_POST['ClosingMaandag'];
+				$restaurant->OpeningMaandag=htmlspecialchars($_POST['Openingmaandag']);
+				$restaurant->ClosingMaandag=htmlspecialchars($_POST['ClosingMaandag']);
 				 /*if (
 				 $restaurant->OpeningMaandag < $restaurant->ClosingMaandag)
 				 {
 				 	echo "hannes";
 				 }*/
 				if (!empty($_POST['geslotenDinsdag'])) 
-				{$restaurant->geslotenDinsdag=$_POST['geslotenDinsdag'];}
+				{$restaurant->geslotenDinsdag=htmlspecialchars($_POST['geslotenDinsdag']);}
 				else {$restaurant->geslotenDinsdag=0;}
-				$restaurant->OpeningDinsdag=$_POST['OpeningDinsdag'];
-				$restaurant->ClosingDinsdag=$_POST['ClosingDinsdag'];
+				$restaurant->OpeningDinsdag=htmlspecialchars($_POST['OpeningDinsdag']);
+				$restaurant->ClosingDinsdag=htmlspecialchars($_POST['ClosingDinsdag']);
 
 				if (!empty($_POST['geslotenWoensdag'])) 
-				{$restaurant->geslotenWoensdag=$_POST['geslotenWoensdag'];}
+				{$restaurant->geslotenWoensdag=htmlspecialchars($_POST['geslotenWoensdag']);}
 				else {$restaurant->geslotenWoensdag=0;}
-				$restaurant->OpeningWoensdag=$_POST['OpeningWoensdag'];
-				$restaurant->ClosingWoensdag=$_POST['ClosingWoensdag'];
+				$restaurant->OpeningWoensdag=htmlspecialchars($_POST['OpeningWoensdag']);
+				$restaurant->ClosingWoensdag=htmlspecialchars($_POST['ClosingWoensdag']);
 
 				if (!empty($_POST['geslotenDonderdag'])) 
-				{$restaurant->geslotenDonderdag=$_POST['geslotenDonderdag'];}
+				{$restaurant->geslotenDonderdag=htmlspecialchars($_POST['geslotenDonderdag']);}
 				else {$restaurant->geslotenDonderdag=0;}
-				$restaurant->OpeningDonderdag=$_POST['OpeningDonderdag'];
-				$restaurant->ClosingDonderdag=$_POST['ClosingDonderdag'];
+				$restaurant->OpeningDonderdag=htmlspecialchars($_POST['OpeningDonderdag']);
+				$restaurant->ClosingDonderdag=htmlspecialchars($_POST['ClosingDonderdag']);
 
 				if (!empty($_POST['geslotenVrijdag'])) 
-				{$restaurant->geslotenVrijdag=$_POST['geslotenVrijdag'];}
+				{$restaurant->geslotenVrijdag=htmlspecialchars($_POST['geslotenVrijdag']);}
 				else {$restaurant->geslotenVrijdag=0;}
-				$restaurant->OpeningVrijdag=$_POST['OpeningVrijdag'];
-				$restaurant->ClosingVrijdag=$_POST['ClosingVrijdag'];
+				$restaurant->OpeningVrijdag=htmlspecialchars($_POST['OpeningVrijdag']);
+				$restaurant->ClosingVrijdag=htmlspecialchars($_POST['ClosingVrijdag']);
 
 				if (!empty($_POST['geslotenZaterdag'])) 
-				{$restaurant->geslotenZaterdag=$_POST['geslotenZaterdag'];}
+				{$restaurant->geslotenZaterdag=htmlspecialchars($_POST['geslotenZaterdag']);}
 				else {$restaurant->geslotenZaterdag=0;}
-				$restaurant->OpeningZaterdag=$_POST['OpeningZaterdag'];
-				$restaurant->ClosingZaterdag=$_POST['ClosingZaterdag'];
+				$restaurant->OpeningZaterdag=htmlspecialchars($_POST['OpeningZaterdag']);
+				$restaurant->ClosingZaterdag=htmlspecialchars($_POST['ClosingZaterdag']);
 
 				if (!empty($_POST['geslotenZondag'])) 
-				{$restaurant->geslotenZondag=$_POST['geslotenZondag'];}
+				{$restaurant->geslotenZondag=htmlspecialchars($_POST['geslotenZondag']);}
 				else {$restaurant->geslotenZondag=0;}
-				$restaurant->OpeningZondag=$_POST['OpeningZondag'];
-				$restaurant->ClosingZondag=$_POST['ClosingZondag'];
+				$restaurant->OpeningZondag=htmlspecialchars($_POST['OpeningZondag']);
+				$restaurant->ClosingZondag=htmlspecialchars($_POST['ClosingZondag']);
 
 					
 				$restaurant->SaveRestaurant();	

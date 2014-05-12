@@ -5,7 +5,7 @@
 	//unset($_SESSION['username']); -> één item, voor meerdere items duurt het lang
 	session_destroy(); //verwijdert heel de sessie in één keer, bijvoorbeeld, gebruikersnaam, mandje,...
 
-	header("Location:index.php")
+	header("Location:Index.php")
 ?><!doctype html>
 <html lang="en">
 <head>
