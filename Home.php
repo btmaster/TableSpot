@@ -16,40 +16,49 @@
 
 				
 				if (!empty($_POST['geslotenMaandag'])) 
-				{$restaurant->geslotenMaandag=$_POST['geslotenMaandag'];}
+				{
+					$restaurant->geslotenMaandag=$_POST['geslotenMaandag'];
+				} else {$restaurant->geslotenMaandag=0;}
+				$restaurant->OpeningMaandag=$_POST['Openingmaandag'];
+				$restaurant->ClosingMaandag=$_POST['ClosingMaandag'];
 				 if (
-				 $restaurant->Openingmaandag=$_POST['Openingmaandag']<
-				 $restaurant->ClosingMaandag=$_POST['ClosingMaandag'])
+				 $restaurant->OpeningMaandag < $restaurant->ClosingMaandag)
 				 {
 				 	echo "hannes";
 				 }
 				if (!empty($_POST['geslotenDinsdag'])) 
 				{$restaurant->geslotenDinsdag=$_POST['geslotenDinsdag'];}
+				else {$restaurant->geslotenDinsdag=0;}
 				$restaurant->OpeningDinsdag=$_POST['OpeningDinsdag'];
 				$restaurant->ClosingDinsdag=$_POST['ClosingDinsdag'];
 
 				if (!empty($_POST['geslotenWoensdag'])) 
 				{$restaurant->geslotenWoensdag=$_POST['geslotenWoensdag'];}
+				else {$restaurant->geslotenWoensdag=0;}
 				$restaurant->OpeningWoensdag=$_POST['OpeningWoensdag'];
 				$restaurant->ClosingWoensdag=$_POST['ClosingWoensdag'];
 
 				if (!empty($_POST['geslotenDonderdag'])) 
 				{$restaurant->geslotenDonderdag=$_POST['geslotenDonderdag'];}
+				else {$restaurant->geslotenDonderdag=0;}
 				$restaurant->OpeningDonderdag=$_POST['OpeningDonderdag'];
 				$restaurant->ClosingDonderdag=$_POST['ClosingDonderdag'];
 
 				if (!empty($_POST['geslotenVrijdag'])) 
 				{$restaurant->geslotenVrijdag=$_POST['geslotenVrijdag'];}
+				else {$restaurant->geslotenVrijdag=0;}
 				$restaurant->OpeningVrijdag=$_POST['OpeningVrijdag'];
 				$restaurant->ClosingVrijdag=$_POST['ClosingVrijdag'];
 
 				if (!empty($_POST['geslotenZaterdag'])) 
 				{$restaurant->geslotenZaterdag=$_POST['geslotenZaterdag'];}
+				else {$restaurant->geslotenZaterdag=0;}
 				$restaurant->OpeningZaterdag=$_POST['OpeningZaterdag'];
 				$restaurant->ClosingZaterdag=$_POST['ClosingZaterdag'];
 
 				if (!empty($_POST['geslotenZondag'])) 
 				{$restaurant->geslotenZondag=$_POST['geslotenZondag'];}
+				else {$restaurant->geslotenZondag=0;}
 				$restaurant->OpeningZondag=$_POST['OpeningZondag'];
 				$restaurant->ClosingZondag=$_POST['ClosingZondag'];
 

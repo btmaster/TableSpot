@@ -9,7 +9,7 @@
 		private $m_sDiscription;
 		private $m_iSelectedId;
 		private $m_igeslotenMaandag;
-		private $m_iOpeningmaandag;
+		private $m_iOpeningMaandag;
 		private $m_iClosingMaandag; 
 		private $m_igeslotenDinsdag;
 		private $m_iOpeningDinsdag;
@@ -50,172 +50,206 @@
 				/* dagen */	
 					/* maandag */
 				case "geslotenMaandag":
+				
 					if ($p_vValue == "1") 
 					{
 					$this->m_igeslotenMaandag = $p_vValue;
-					break;
+					
 					}
 					else
 					{
 						$this->m_igeslotenMaandag = 0;
-						break;
-					}	
-					case 'Openingmaandag':
-					if($this->m_igeslotenMaandag === "0")
-					{
-					$this->m_iOpeningmaandag = $p_vValue;
-					break;
+						
 					}
-					case 'ClosingMaandag':
-					if($this->m_igeslotenMaandag === "0")
+				break;	
+
+				case 'OpeningMaandag':
+
+					if($this->m_igeslotenMaandag === 0)
+					{
+					$this->m_iOpeningMaandag = $p_vValue;
+					
+					
+					}
+				break;
+
+				case 'ClosingMaandag':
+					if($this->m_igeslotenMaandag === 0)
 					{
 					$this->m_iClosingMaandag = $p_vValue;
-					break;
+					
 					}
+				break;
 					/* Disndag */
 				case "geslotenDinsdag":
 					if ($p_vValue == "1") 
 					{
 					$this->m_igeslotenDinsdag = $p_vValue;
-					break;
+					
 					}
 					else
 					{
 						$this->m_igeslotenDinsdag = 0;
-						break;
-					}	
-					case 'OpeningDinsdag':
-					if($this->m_igeslotenDinsdag === "0")
+						
+					}
+				break;	
+				case 'OpeningDinsdag':
+					if($this->m_igeslotenDinsdag === 0)
 					{
 					$this->m_iOpeningDinsdag = $p_vValue;
-					break;
+					
 					}
-					case 'ClosingDinsdag':
-					if($this->m_igeslotenDinsdag === "0")
+				break;
+				case 'ClosingDinsdag':
+					if($this->m_igeslotenDinsdag === 0)
 					{
 					$this->m_iClosingDinsdag = $p_vValue;
-					break;
+					
 					}
+				break;
 					/* Woensdag */
 				case "geslotenWoensdag":
 					if ($p_vValue == "1") 
 					{
 					$this->m_igeslotenWoensdag = $p_vValue;
-					break;
+					
 					}
 					else
 					{
 						$this->m_igeslotenWoensdag = 0;
-						break;
-					}	
-					case 'OpeningWoensdag':
-					if($this->m_igeslotenWoensdag === "0")
+						
+					}
+				break;
+				case 'OpeningWoensdag':
+					if($this->m_igeslotenWoensdag === 0)
 					{
 					$this->m_iOpeningWoensdag = $p_vValue;
-					break;
+					
 					}
-					case 'ClosingWoensdag':
-					if($this->m_igeslotenWoensdag === "0")
+				break;
+				case 'ClosingWoensdag':
+					if($this->m_igeslotenWoensdag === 0)
 					{
 					$this->m_iClosingWoensdag = $p_vValue;
-					break;
+					
 					}	
+				break;
 					/* Donderdag */
 				case "geslotenDonderdag":
 					if ($p_vValue == "1") 
 					{
 					$this->m_igeslotenDonderdag = $p_vValue;
-					break;
+					
 					}
 					else
 					{
 						$this->m_igeslotenDonderdag = 0;
-						break;
+						
 					}	
-					case 'OpeningDonderdag':
-					if($this->m_igeslotenDonderdag === "0")
+				break;
+
+				case 'OpeningDonderdag':
+					if($this->m_igeslotenDonderdag === 0)
 					{
 					$this->m_iOpeningDonderdag = $p_vValue;
-					break;
+					
 					}
-					case 'ClosingDonderdag':
-					if($this->m_igeslotenDonderdag === "0")
+				break;
+
+				case 'ClosingDonderdag':
+					if($this->m_igeslotenDonderdag === 0)
 					{
 					$this->m_iClosingDonderdag = $p_vValue;
-					break;
+					
 					}
+				break;
 					/*Vrijdag */
 				case "geslotenVrijdag":
 					if ($p_vValue == "1") 
 					{
 					$this->m_igeslotenVrijdag = $p_vValue;
-					break;
+					
 					}
 					else
 					{
 						$this->m_igeslotenVrijdag = 0;
-						break;
+						
 					}	
-					case 'OpeningVrijdag':
-					if($this->m_igeslotenVrijdag === "0")
+				break;
+
+				case 'OpeningVrijdag':
+					if($this->m_igeslotenVrijdag === 0)
 					{
 					$this->m_iOpeningVrijdag = $p_vValue;
-					break;
+					
 					}
-					case 'ClosingVrijdag':
-					if($this->m_igeslotenVrijdag === "0")
+				break;
+
+				case 'ClosingVrijdag':
+					if($this->m_igeslotenVrijdag === 0)
 					{
 					$this->m_iClosingVrijdag = $p_vValue;
-					break;
-					}	
+					
+					}
+				break;	
 					/* Zaterdag */
 				case "geslotenZaterdag":
 					if ($p_vValue == "1") 
 					{
 					$this->m_igeslotenZaterdag = $p_vValue;
-					break;
+					
 					}
 					else
 					{
 						$this->m_igeslotenZaterdag = 0;
-						break;
-					}	
-					case 'OpeningZaterdag':
-					if($this->m_igeslotenZaterdag === "0")
+						
+					}
+				break;
+
+				case 'OpeningZaterdag':
+					if($this->m_igeslotenZaterdag === 0)
 					{
 					$this->m_iOpeningZaterdag = $p_vValue;
-					break;
+					
 					}
-					case 'ClosingZaterdag':
-					if($this->m_igeslotenZaterdag === "0")
+				break;
+
+				case 'ClosingZaterdag':
+					if($this->m_igeslotenZaterdag === 0)
 					{
 					$this->m_iClosingZaterdag = $p_vValue;
-					break;
+				
 					}
+				break;
 					/* Zondag */
 				case "geslotenZondag":
 					if ($p_vValue == "1") 
 					{
 					$this->m_igeslotenZondag = $p_vValue;
-					break;
+					
 					}
 					else
 					{
 						$this->m_igeslotenZondag = 0;
-						break;
-					}	
-					case 'OpeningZondag':
-					if($this->m_igeslotenZondag === "0")
+						
+					}
+				break;
+
+				case 'OpeningZondag':
+					if($this->m_igeslotenZondag === 0)
 					{
 					$this->m_iOpeningZondag = $p_vValue;
-					break;
+					
 					}
-					case 'ClosingZondag':
-					if($this->m_igeslotenZondag === "0")
+				break;
+
+				case 'ClosingZondag':
+					if($this->m_igeslotenZondag === 0)
 					{
 					$this->m_iClosingZondag = $p_vValue;
-					break;
-					}												
+					
+					}
+				break;													
 				case "SelectedId":
 				$this->m_iSelectedId = $p_vValue;
 				break;
@@ -242,7 +276,7 @@
 				case "geslotenMaandag":
 				return $this->m_igeslotenMaandag;
 				break;
-				case "Openingmaandag":
+				case "OpeningMaandag":
 				return $this->m_iOpeningmaandag;
 				break;
 				case "ClosingMaandag":
@@ -348,13 +382,15 @@
 
 				/*dagen*/
 				/* maandag */
+				
 				$sql = "insert into openinghours ( Dag, OpenHour, CloseHour, Status, FK_restaurants_ID) VALUES (
 					'Maandag',
-					'". $db->conn->real_escape_string($this->m_iOpeningmaandag) ."',
+					'". $db->conn->real_escape_string($this->m_iOpeningMaandag) ."',
 					'". $db->conn->real_escape_string($this->m_iClosingMaandag) ."',
-					'". $db->conn->real_escape_string($this->m_igeslotenMaandag) ."'
+					'". $db->conn->real_escape_string($this->m_igeslotenMaandag) ."',
 					'".$restaurants_id['ID_Restaurant']."');";
-
+					//throw new Exception($sql);
+					
 					$db->conn->query($sql);
 
 				/* dinsdag */
@@ -362,7 +398,7 @@
 					'Dinsdag',
 					'". $db->conn->real_escape_string($this->m_iOpeningDinsdag) ."',
 					'". $db->conn->real_escape_string($this->m_iClosingDinsdag) ."',
-					'". $db->conn->real_escape_string($this->m_igeslotenDinsdag) ."'
+					'". $db->conn->real_escape_string($this->m_igeslotenDinsdag) ."',
 					'".$restaurants_id['ID_Restaurant']."');";
 
 					$db->conn->query($sql);
@@ -372,7 +408,7 @@
 					'Woensdag',
 					'". $db->conn->real_escape_string($this->m_iOpeningWoensdag) ."',
 					'". $db->conn->real_escape_string($this->m_iClosingWoensdag) ."',
-					'". $db->conn->real_escape_string($this->m_igeslotenWoensdag) ."'
+					'". $db->conn->real_escape_string($this->m_igeslotenWoensdag) ."',
 					'".$restaurants_id['ID_Restaurant']."');";
 
 					$db->conn->query($sql);
@@ -382,7 +418,7 @@
 					'Donderdag',
 					'". $db->conn->real_escape_string($this->m_iOpeningDonderdag) ."',
 					'". $db->conn->real_escape_string($this->m_iClosingDonderdag) ."',
-					'". $db->conn->real_escape_string($this->m_igeslotenDonderdag) ."'
+					'". $db->conn->real_escape_string($this->m_igeslotenDonderdag) ."',
 					'".$restaurants_id['ID_Restaurant']."');";
 
 					$db->conn->query($sql);
@@ -392,7 +428,7 @@
 					'Vrijdag',
 					'". $db->conn->real_escape_string($this->m_iOpeningVrijdag) ."',
 					'". $db->conn->real_escape_string($this->m_iClosingVrijdag) ."',
-					'". $db->conn->real_escape_string($this->m_igeslotenVrijdag) ."'
+					'". $db->conn->real_escape_string($this->m_igeslotenVrijdag) ."',
 					'".$restaurants_id['ID_Restaurant']."');";
 
 					$db->conn->query($sql);
@@ -402,7 +438,7 @@
 					'Zaterdag',
 					'". $db->conn->real_escape_string($this->m_iOpeningZaterdag) ."',
 					'". $db->conn->real_escape_string($this->m_iClosingZaterdag) ."',
-					'". $db->conn->real_escape_string($this->m_igeslotenZaterdag) ."'
+					'". $db->conn->real_escape_string($this->m_igeslotenZaterdag) ."',
 					'".$restaurants_id['ID_Restaurant']."');";
 
 					$db->conn->query($sql);
@@ -412,7 +448,7 @@
 					'Zondag',
 					'". $db->conn->real_escape_string($this->m_iOpeningZondag) ."',
 					'". $db->conn->real_escape_string($this->m_iClosingZondag) ."',
-					'". $db->conn->real_escape_string($this->m_igeslotenZondag) ."'
+					'". $db->conn->real_escape_string($this->m_igeslotenZondag) ."',
 					'".$restaurants_id['ID_Restaurant']."');";
 
 					$db->conn->query($sql);
