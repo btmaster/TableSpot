@@ -250,12 +250,68 @@ border-radius: 10px;
 	width: 50%;
 	margin-top: 30px;
 }
+.collum_2 h1
+{
+	padding: 15px;
+	margin: 15px;
+	margin-top: 0px;
+	background-color: #ECF0F1;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 150%;
+	margin-bottom: 10px;
+}
 .collum_2 .sectie_1
 {
-	overflow: auto;
-	overflow-y: hidden;
+	overflow: scroll;
+	overflow-x: hidden;
+	max-height:530px;
+	padding: 15px;
+	margin: 15px;
+	background-color: #ECF0F1;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
 }
-
+.restaurant
+{
+	margin-top: 10px;
+	padding-bottom:15px;
+	border-bottom: 1px solid #fff;
+}
+.collum_2 .restaurant a
+{
+	text-decoration: none;
+	color: #232323;
+}
+.collum_2 .restaurant:hover a
+{
+	color: #2ECC71;
+}
+.collum_2 .restaurant a h1
+{
+	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 150%;
+	margin-bottom: 10px;
+}
+.collum_2 .restaurant a h2
+{
+	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 110%;
+	margin-bottom: 10px;
+}
+.collum_2 .restaurant a p
+{
+	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 100%;
+	margin-bottom: 10px;
+}
 /* opmaak sectie_2 */
 .dag
 {
