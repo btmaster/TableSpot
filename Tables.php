@@ -43,6 +43,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title><?php echo $restaurant->GetTitle(); ?></title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link href="css/Tablespot.css" rel="stylesheet">
 </head>
 <body>
@@ -50,7 +51,7 @@
 	<div id="restauranthouder">
 <?php
  
-include_once("include/navinclude.php");
+include_once("include/navincludeHouder.php");
 
  
 ?>	

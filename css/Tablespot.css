@@ -176,6 +176,7 @@ nav{
 }
 nav li {
 	display: inline;
+	padding: 15px;
 
 }
 nav li a{
@@ -183,7 +184,7 @@ nav li a{
 	text-decoration: none;
 
 }
-nav li .active
+.active
 {
 	color: #ffffff;
 	background-color: #2ECC71;
@@ -192,6 +193,7 @@ nav li a:hover
 {
 	color: #16A085;
 }
+
 #logout
 {
 	color: #ffffff;
@@ -200,6 +202,17 @@ nav li a:hover
 	float: right;
 }
 #logout:hover
+{
+	color:#2ECC71; 
+}
+nav li #logout
+{
+	color: #ffffff;
+	margin-top: 0px;
+	margin-right: 50px; 
+	float: right;
+}
+nav li #logout:hover
 {
 	color:#2ECC71; 
 }
