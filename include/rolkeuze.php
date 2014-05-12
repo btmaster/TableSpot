@@ -1,20 +1,21 @@
 <?php
 if ($_SESSION['rol'] == "restaurant_keeper") {
-?>	
-	<style type="text/css">
-	#user
-		{
-			display:none;
-		}
-	</style>
-	<?php }
+	echo "
+	<style type='text/css'>
 
-	else
-	{
-		?>
-	<style type="text/css">#restauranthouder{
-display:none;
-}</style>
-<?php
+	#user{
+			display:none;
+	}
+
+	</style>";
+	} else {
+	echo "
+	<style type='text/css'>
+
+	#restauranthouder{
+		display:none;
+	}
+
+	</style>";
 }
 ?>

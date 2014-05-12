@@ -99,7 +99,7 @@ $(document).ready(function()
 		e.preventDefault();
 	});
 
-	$(".search").on("change", function(e)
+	$(".search").on("keyup", function(e)
 	{
 		getTable('knop');
 		e.preventDefault();

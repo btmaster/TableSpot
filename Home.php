@@ -170,7 +170,7 @@
 		<h1>Restaurants</h1>
 		<div class="sectie_1">
            <?php      
-		$res = $restaurant->GetAllRestaurants();
+			$res = $restaurant->GetAllRestaurants();
 
                             while($restaurantdetails = $res->fetch_assoc())
                             {

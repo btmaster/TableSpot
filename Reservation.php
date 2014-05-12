@@ -67,7 +67,7 @@
 			<label for="time">Tijdstip</label><br/>
 			<input type="time" name ="time" id="time"><br/>
 			<input type="submit" name="btnVoegToe" value="
-			Reserveer"><br/>
+			Reserveer" id="reserveer"><br/>
 		</form>
 			<?php
 			if(isset($error))

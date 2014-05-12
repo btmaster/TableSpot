@@ -55,6 +55,7 @@ try{
 
 		}
 
+
 	header('Content-Type: application/json');
 	echo json_encode($response);
 	}
@@ -62,8 +63,4 @@ try{
 		$error = $e->getMessage();
 	}	
 
-	if(isset($error))
-	{
-		echo $error;
-	}
 ?>

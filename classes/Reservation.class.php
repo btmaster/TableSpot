@@ -113,13 +113,11 @@
 									throw new Exception("You can only make reservations between " . $oneClosing['OpenHour'] . " and " . $oneClosing['CloseHour']);
 								}
 
-							}
-							
-							 
+							}	 
 							
 					}	
 
-					
+
 					$db = new Db();
 					$sql = "INSERT INTO reservations(Date,Time, AmountPeople,FK_Customer_ID,FK_Table_ID,FK_Restaurant_ID) VALUES (
 						'".$this->m_dDate."',
@@ -129,6 +127,7 @@
 						'".$this->m_iTable."',
 						'".$this->m_iRestaurant."');";
 					$db->conn->query($sql);
+					header("Location: Overview.php");
 				}
 				
 			}
