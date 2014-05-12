@@ -542,3 +542,8 @@ margin: 8px 0px 8px 0px;
 	margin-bottom: 35px;
 	font-size: 100%;
 }
+
+#form, #gerechten
+{
+	display:none;
+}
