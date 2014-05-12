@@ -87,7 +87,7 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="js/index.js" type="text/javascript"></script>
 </head>
-<header><h1>Table Spot</h1><a href="Logout.php" alt="logout" id="logout">Logout</a></header>
+<header><h1>Tables Spot</h1><a href="Logout.php" alt="logout" id="logout">Logout</a></header>
 <body>
 <!-- restauranthouder -->
 <div id="container">
