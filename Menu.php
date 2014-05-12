@@ -58,18 +58,19 @@
 include_once("include/navincludeHouder.php");
  
 ?>
-	<div id="menu">
+<div id="container">
+	<div id="menu" class="menus">
 	<h1>Add a menu</h1>
 	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 		<label for="name">Name</label><br/>
 		<input type="text" name="name" id="name"><br/>
 		<label for="description">Description</label><br/>
-		<input type="textarea" name="description" id="description"><br/>
-		<input type="submit" name="btnVoegtoe" value="Voeg Toe" id="maakMenu"><br/>
+		<textarea name="description" id="description"></textarea><br/>
+		<input type="submit" name="btnVoegtoe" value="Voeg Toe" id="maakMenu" class="btn"><br/>
 	</form>
 
 	</div>
-		<div id="gerechten">
+		<div id="gerechten" class="menus">
 		<h1>Add dish</h1>
 
 		<?php
@@ -86,8 +87,8 @@ include_once("include/navincludeHouder.php");
 			<label for="gerecht">Dish</label><br/>
 			<input type="text" name="gerecht" id="gerecht"><br/>
 			<label for="prijs">Price</label><br/>
-			<input type="textarea" name="prijs" id="prijs"><br/>
-			<input type="submit" name="btnVoegtoe" value="Voeg Toe" id="maakGerecht"><br/>
+			<input type="text" name="prijs" id="prijs"><br/>
+			<input type="submit" name="btnVoegtoe" value="Voeg Toe" id="maakGerecht" class="btn"><br/>
 		</form>
 
 		<div id="lijstgerechten">
@@ -102,5 +103,6 @@ include_once("include/navincludeHouder.php");
 	
 
 	<?php if(isset($error)){echo $error;} ?>
+	</div>
 </body>
 </html>
