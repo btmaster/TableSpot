@@ -6,7 +6,9 @@
 		{
 		include_once("include/rolkeuze.php");
 		$email = $_SESSION['email'];
-		
+		include_once("classes/Restaurant.class.php");
+		$restaurant = new Restaurant();	
+		$restaurant->SelectedId = $_GET['id'];
 		include_once("classes/Customer.class.php");
 		$customer = new Customer();
 		$activeUser = $customer->Select($email);
@@ -23,6 +25,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Overzicht</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link href="css/Tablespot.css" rel="stylesheet">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="js/index.js" type="text/javascript"></script>
@@ -35,6 +38,8 @@
 	include_once("include/navincludeKlant.php");
 	 
 	?>
+	<div id="container">
+		<div class="menus">
 		<h1>Vrije tafels</h1>
 
 			<?php
@@ -65,11 +70,13 @@
 			?>
 			
 		</div>
+		</div>
 		<?php
 		if(isset($error))
 		{
 			echo "<p>$error</p>";
 		}
 		?>
+		</div>
 </body>
 </html>

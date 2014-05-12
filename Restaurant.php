@@ -186,7 +186,7 @@ include_once("include/navincludeHouder.php");
 	include_once("include/navincludeKlant.php");
 	 
 	?>	<div id="container">
-	
+	<div class="menus">
 		<h1>Menukaart</h1>
 		<?php 
 		try{
@@ -218,12 +218,12 @@ include_once("include/navincludeHouder.php");
 
 		if(isset($error))
 		{
-			echo $error;
+			echo "<p>". $error . "</p>";
 		}
 
 		?>
-
-
+</div>
+<div class="menus">
 		<h1>Free Tables</h1>
 		<label for="amount">Amount of people</label>
 		<input type="text" name="amount" id="amount" class="search" data-id="amount" value="2">
@@ -233,7 +233,7 @@ include_once("include/navincludeHouder.php");
 		<input type="time" name="time" id="time" class="search" data-id="time" value="<?php echo date('H:i:s') ?>"><br/>
 		<div id="tafels">
 		</div>
-	
+	</div>
 	<?php
 		if(isset($error))
 		{

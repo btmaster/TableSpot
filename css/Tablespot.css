@@ -490,6 +490,13 @@ margin: 8px 0px 8px 0px;
 	font-size: 125%;
 	margin-bottom: 25px;
 }
+.menus h2
+{
+	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 105%;
+	margin-bottom: 15px;
+}
 .menus label
 {
 	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
